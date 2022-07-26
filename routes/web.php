@@ -41,5 +41,10 @@ Route::get('/dashboard', 'HomeController@index')->name('home');
 
     Route::view('add_parent', 'livewire.show_Form');
 
+
+
+
+        Route::resource('Teachers', 'TeacherController');
+
 });
 
