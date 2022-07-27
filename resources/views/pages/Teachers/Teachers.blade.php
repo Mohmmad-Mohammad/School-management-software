@@ -25,7 +25,7 @@
                                    aria-pressed="true">{{ trans('Teacher_trans.Add_Teacher') }}</a><br><br>
                                 <div class="table-responsive">
                                     <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
-                                           data-page-length="50"
+                                           data-page-length="50" style="padding: 5px;"
                                            style="text-align: center">
                                         <thead>
                                         <tr>
@@ -34,7 +34,7 @@
                                             <th>{{trans('Teacher_trans.Gender')}}</th>
                                             <th>{{trans('Teacher_trans.Joining_Date')}}</th>
                                             <th>{{trans('Teacher_trans.specialization')}}</th>
-                                            <th>العمليات</th>
+                                            <th>{{trans('Teacher_trans.Processes')}}</th>
                                         </tr>
                                         </thead>
                                         <tbody>

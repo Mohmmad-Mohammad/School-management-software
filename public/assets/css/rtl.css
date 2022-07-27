@@ -76,6 +76,14 @@ NOTE: This file includes all admin Template plugins and Shortcodes. If you don't
 ::before {
   box-sizing: border-box; }
 
+  select.form-control-sm{
+    padding: 5px;
+}
+
+select.form-control{
+    padding: 5px;
+    text-align: center;
+}
 html {
     line-height: 1.15;
   -webkit-text-size-adjust: 100%;

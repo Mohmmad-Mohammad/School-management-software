@@ -20,8 +20,8 @@ class TeacherRepository implements TeacherRepositoryInterface{
         return Gender::all();
     }
 
-    public function StoreTeachers($request){
-
+    public function StoreTeachers($request)
+    {
     try {
             $Teachers = new Teacher();
             $Teachers->email = $request->Email;

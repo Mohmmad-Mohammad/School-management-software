@@ -71,7 +71,14 @@ NOTE: This file includes all admin Template plugins and Shortcodes. If you don't
 *, ::after, ::before {
   box-sizing: border-box; }
 
+select.form-control-sm{
+    padding: 5px;
+}
 
+select.form-control{
+    padding: 5px;
+    text-align: center;
+}
 
 html {
   font-family: sans-serif;
