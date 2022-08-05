@@ -11,4 +11,10 @@ class My_Parent extends Model
     public $translatable = ['Name_Father','Job_Father','Name_Mother','Job_Mother'];
     protected $table = 'my__parents';
     protected $guarded=[];
+
+
+    public function images()
+    {
+        return $this->morphMany('App\Models\Image', 'imageable');
+    }
 }

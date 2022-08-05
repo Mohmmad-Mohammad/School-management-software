@@ -3,11 +3,13 @@
 namespace App\Http\Livewire;
 
 use App\Models\grade;
+use App\Models\Image;
 use App\Models\My_Parent;
 use App\Models\Nationalitie;
 use App\Models\ParentAttachment;
 use App\Models\Religion;
 use App\Models\Type_Blood;
+use Flasher\Laravel\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -33,7 +35,7 @@ class AddParent extends Component
         $National_ID_Mother, $Passport_ID_Mother,
         $Phone_Mother, $Job_Mother, $Job_Mother_en,
         $Nationality_Mother_id, $Blood_Type_Mother_id,
-        $Address_Mother, $Religion_Mother_id;
+        $Address_Mother, $Religion_Mother_id ,$filename,$imageable_id ,$imageable_type,$name,$file,$images ;
 
 
     public function updated($propertyName)
@@ -131,15 +133,16 @@ class AddParent extends Component
             $My_Parent->Religion_Mother_id = $this->Religion_Mother_id;
             $My_Parent->Address_Mother = $this->Address_Mother;
             $My_Parent->save();
-            if (!empty($this->photos)){
-                foreach ($this->photos as $photo) {
-                    $photo->storeAs($this->National_ID_Father, $photo->getClientOriginalName(), $disk = 'parent_attachments');
-                    ParentAttachment::create([
-                        'file_name' => $photo->getClientOriginalName(),
-                        'parent_id' => My_Parent::latest()->first()->id,
-                    ]);
-                }
-            }
+            // if (!empty($this->photos)){
+            //     foreach ($this->photos as $photo) {
+            //         $photo->storeAs($this->National_ID_Father, $photo->getClientOriginalName(), $disk = 'parent_attachments');
+            //         ParentAttachment::create([
+            //             'file_name' => $photo->getClientOriginalName(),
+            //             'parent_id' => My_Parent::latest()->first()->id,
+            //         ]);
+            //     }
+            // }
+
             $this->successMessage = trans('messages.success');
             $this->clearForm();
             $this->currentStep = 1;
@@ -229,6 +232,19 @@ class AddParent extends Component
             $My_Parent->Address_Mother = $this->Address_Mother;
             $My_Parent->update();
         }
+
+            foreach($My_Parent->file('photos') as $file)
+            {
+                $name = $file->getClientOriginalName();
+                $file->storeAs('attachments/parents/'. $My_Parent->Phone_Father , $name,'upload_attachments');
+                // insert in image_table
+                $images= new Image();
+                $images->filename=$name;
+                $images->imageable_id=  $My_Parent->id ;
+                $images->imageable_type = 'App\Models\My_Parent';
+                $images->update();
+            }
+
         toastr()->success(trans('messages.success'));
         return redirect()->to('/add_parent');
     }

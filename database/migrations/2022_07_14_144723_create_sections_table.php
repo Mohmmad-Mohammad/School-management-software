@@ -19,6 +19,8 @@ class CreateSectionsTable extends Migration
             $table->integer('Status');
             $table->bigInteger('Grade_id')->unsigned();
             $table->bigInteger('Class_id')->unsigned();
+            $table->foreign('Grade_id')->references('id')->on('Grades')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }
