@@ -85,7 +85,7 @@ class AddParent extends Component
         ]);
         $this->currentStep = 2;
     }
-    //secondStepSubmit
+//secondStepSubmit
     public function secondStepSubmit()
     {
         $this->validate([
@@ -108,7 +108,7 @@ class AddParent extends Component
     {
         try {
             $My_Parent = new My_Parent();
-            // Father_INPUTS
+// Father_INPUTS
             $My_Parent->Email = $this->Email;
             $My_Parent->Password = Hash::make($this->Password);
             $My_Parent->Name_Father = ['en' => $this->Name_Father_en, 'ar' => $this->Name_Father];
@@ -121,7 +121,7 @@ class AddParent extends Component
             $My_Parent->Blood_Type_Father_id = $this->Blood_Type_Father_id;
             $My_Parent->Religion_Father_id = $this->Religion_Father_id;
             $My_Parent->Address_Father = $this->Address_Father;
-            // Mother_INPUTS
+// Mother_INPUTS
             $My_Parent->Name_Mother = ['en' => $this->Name_Mother_en, 'ar' => $this->Name_Mother];
             $My_Parent->National_ID_Mother = $this->National_ID_Mother;
             $My_Parent->Passport_ID_Mother = $this->Passport_ID_Mother;
@@ -133,16 +133,16 @@ class AddParent extends Component
             $My_Parent->Religion_Mother_id = $this->Religion_Mother_id;
             $My_Parent->Address_Mother = $this->Address_Mother;
             $My_Parent->save();
-            // if (!empty($this->photos)){
-            //     foreach ($this->photos as $photo) {
-            //         $photo->storeAs($this->National_ID_Father, $photo->getClientOriginalName(), $disk = 'parent_attachments');
-            //         ParentAttachment::create([
-            //             'file_name' => $photo->getClientOriginalName(),
-            //             'parent_id' => My_Parent::latest()->first()->id,
-            //         ]);
-            //     }
-            // }
-
+            if (!empty($this->photos)){
+                foreach ($this->photos as $photo) {
+                    $photo->storeAs('attachments/My_Parent/'.$this->National_ID_Father, $photo->getClientOriginalName(), $disk = 'upload_attachments');
+                    Image::create([
+                        'filename' => $photo->getClientOriginalName(),
+                        'imageable_id' =>My_Parent::latest()->first()->id,
+                        'imageable_type' =>'App\Models\My_Parent',
+                    ]);
+                }
+            }
             $this->successMessage = trans('messages.success');
             $this->clearForm();
             $this->currentStep = 1;
@@ -232,18 +232,17 @@ class AddParent extends Component
             $My_Parent->Address_Mother = $this->Address_Mother;
             $My_Parent->update();
         }
+        if (!empty($this->photos)){
+            foreach ($this->photos as $photo) {
+                $photo->storeAs('attachments/My_Parent/'.$this->National_ID_Father, $photo->getClientOriginalName(), $disk = 'upload_attachments');
+                Image::create([
+                    'filename' => $photo->getClientOriginalName(),
+                    'imageable_id' =>$this->Parent_id,
+                    'imageable_type' =>'App\Models\My_Parent',
 
-            foreach($My_Parent->file('photos') as $file)
-            {
-                $name = $file->getClientOriginalName();
-                $file->storeAs('attachments/parents/'. $My_Parent->Phone_Father , $name,'upload_attachments');
-                // insert in image_table
-                $images= new Image();
-                $images->filename=$name;
-                $images->imageable_id=  $My_Parent->id ;
-                $images->imageable_type = 'App\Models\My_Parent';
-                $images->update();
+                ]);
             }
+        }
 
         toastr()->success(trans('messages.success'));
         return redirect()->to('/add_parent');

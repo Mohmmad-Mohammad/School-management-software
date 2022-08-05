@@ -13,7 +13,7 @@ class My_Parent extends Model
     protected $guarded=[];
 
 
-    public function images()
+    public function imageable()
     {
         return $this->morphMany('App\Models\Image', 'imageable');
     }
