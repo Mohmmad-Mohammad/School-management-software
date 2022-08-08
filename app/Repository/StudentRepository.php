@@ -154,19 +154,27 @@ class StudentRepository implements StudentRepositoryInterface
         return redirect()->route('Students.show',$request->student_id);
     }
 
-    public function Download_attachment($studentsname, $filename)
+    public function Download_attachment($studentsname,$filename)
     {
-        return response()->download(public_path('attachments/students/'.$studentsname.'/'.$filename));
+        return Storage::disk('upload_attachments')->download('attachments/students/'.$studentsname.'/'.$filename);
     }
 
     public function Delete_attachment($request)
     {
-     // Delete img in server disk
+        // Delete img in server disk
         Storage::disk('upload_attachments')->delete('attachments/students/'.$request->student_name.'/'.$request->filename);
         // Delete in data
         image::where('id',$request->id)->where('filename',$request->filename)->delete();
         toastr()->error(trans('messages.Delete'));
         return redirect()->route('Students.show',$request->student_id);
+    }
+
+    public function Show_attachment($studentsname,$filename)
+    {
+        //Show in image
+          $files = Storage::disk('upload_attachments')->getDriver()->getAdapter()->applyPathPrefixad('/students/'.$studentsname.'/'.$filename);
+        return file($files) ;
+
     }
 
 

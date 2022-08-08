@@ -116,7 +116,10 @@
                                                         <a class="btn btn-outline-info btn-sm"
                                                            href="{{url('Download_attachment')}}/{{ $attachment->imageable->name }}/{{$attachment->filename}}"
                                                            role="button"><i class="fas fa-download"></i>&nbsp; {{trans('Students_trans.Download')}}</a>
-
+                                                        <a class="btn btn-outline-success btn-sm"
+                                                           href="{{ url('Show_attachment') }}/{{ $attachment->imageable->name }}/{{$attachment->filename}}"
+                                                           role="button"><i class="fas fa-eye"></i>&nbsp;
+                                                            عرض</a>
                                                         <button type="button" class="btn btn-outline-danger btn-sm"
                                                                 data-toggle="modal"
                                                                 data-target="#Delete_img{{ $attachment->id }}"

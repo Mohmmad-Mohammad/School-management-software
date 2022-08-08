@@ -28,18 +28,17 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
     public function store($request)
     {
         DB::beginTransaction();
-
         try {
-
-            $students = student::where('Grade_id',$request->Grade_id)->where('Classroom_id',$request->Classroom_id)->where('section_id',$request->section_id)->where('academic_year',$request->academic_year)->get();
-
+            $students = student::where('Grade_id',$request->Grade_id)
+                ->where('Classroom_id',$request->Classroom_id)
+                ->where('section_id',$request->section_id)
+                ->where('academic_year',$request->academic_year)
+                ->get();
             if($students->count() < 1){
                 return redirect()->back()->with('error_promotions', __('لاتوجد بيانات في جدول الطلاب'));
             }
-
-            // update in table student
-            foreach ($students as $student){
-
+                // update in table student
+               foreach ($students as $student){
                 $ids = explode(',',$student->id);
                 student::whereIn('id', $ids)
                     ->update([
@@ -48,7 +47,6 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                         'section_id'=>$request->section_id_new,
                         'academic_year'=>$request->academic_year_new,
                     ]);
-
                 // insert in to promotions
                 Promotion::updateOrCreate([
                     'student_id'=>$student->id,
@@ -61,17 +59,14 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                     'academic_year'=>$request->academic_year,
                     'academic_year_new'=>$request->academic_year_new,
                 ]);
-
             }
             DB::commit();
             toastr()->success(trans('messages.success'));
             return redirect()->back();
-
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
-
     }
 
     public function destroy($request)
