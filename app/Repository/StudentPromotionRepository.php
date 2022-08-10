@@ -38,7 +38,7 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                 return redirect()->back()->with('error_promotions', __('لاتوجد بيانات في جدول الطلاب'));
             }
                 // update in table student
-               foreach ($students as $student){
+            foreach ($students as $student){
                 $ids = explode(',',$student->id);
                 student::whereIn('id', $ids)
                     ->update([
@@ -72,37 +72,30 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
     public function destroy($request)
     {
         DB::beginTransaction();
-
+        
         try {
-
-            // التراجع عن الكل
-            if($request->page_id ==1){
-
-             $Promotions = Promotion::all();
-             foreach ($Promotions as $Promotion){
-
-                 //التحديث في جدول الطلاب
-                 $ids = explode(',',$Promotion->student_id);
-                 student::whereIn('id', $ids)
-                 ->update([
-                 'Grade_id'=>$Promotion->from_grade,
-                 'Classroom_id'=>$Promotion->from_Classroom,
-                 'section_id'=> $Promotion->from_section,
-                 'academic_year'=>$Promotion->academic_year,
-               ]);
-
-                 //حذف جدول الترقيات
-                 Promotion::truncate();
-
-             }
+            // Back all
+        if($request->page_id ==1){
+            $Promotions = Promotion::all();
+            foreach ($Promotions as $Promotion){
+                // Update in table to student
+                $ids = explode(',',$Promotion->student_id);
+                student::whereIn('id', $ids)
+                ->update([
+                    'Grade_id'=>$Promotion->from_grade,
+                    'Classroom_id'=>$Promotion->from_Classroom,
+                    'section_id'=> $Promotion->from_section,
+                    'academic_year'=>$Promotion->academic_year,
+            ]);
+                    // Delete table promotion
+                    Promotion::truncate();
+                }
                 DB::commit();
                 toastr()->error(trans('messages.Delete'));
                 return redirect()->back();
-
-            }
-
-            else{
-
+            } else {
+                // Back one
+                // Update in table to student
                 $Promotion = Promotion::findorfail($request->id);
                 student::where('id', $Promotion->student_id)
                     ->update([
@@ -111,8 +104,7 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                         'section_id'=> $Promotion->from_section,
                         'academic_year'=>$Promotion->academic_year,
                     ]);
-
-
+                //// Delete table promotion
                 Promotion::destroy($request->id);
                 DB::commit();
                 toastr()->error(trans('messages.Delete'));
@@ -120,13 +112,18 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
 
             }
 
-        }
-
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
 
-
+    public function edit($request)
+    {
+        //Soft delete
+        Student::where('id', $request->id)->delete();
+        Promotion::where('student_id', $request->id)->delete();
+        toastr()->success(trans('messages.success'));
+        return redirect()->back();
+    }
 }

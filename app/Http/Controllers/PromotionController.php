@@ -38,22 +38,15 @@ class PromotionController extends Controller
         //
     }
 
-
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
-    }
-
-
-    public function update(Request $request, $id)
-    {
-        //
+        //Soft delete
+        return $this->Promotion->edit($request);
     }
 
 
     public function destroy(Request $request)
     {
         return $this->Promotion->destroy($request);
-
     }
 }

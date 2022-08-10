@@ -57,6 +57,10 @@ Route::get('/dashboard', 'HomeController@index')->name('home');
         Route::get('/Get_Sections/{id}', 'StudentController@Get_Sections');
         Route::post('Upload_attachment', 'StudentController@Upload_attachment')->name('Upload_attachment');
     Route::post('Delete_attachment', 'StudentController@Delete_attachment')->name('Delete_attachment');
+    Route::post('Delete_attachment', 'StudentController@Delete_attachment')->name('Delete_attachment');
+    Route::post('Promotion.edit/{id}', 'PromotionController@edit')->name('Promotion.edit');
+
+
 });
-Route::get('Download_attachment/{studentsname}/{filename}', 'StudentController@Download_attachment')->name('Download_attachment');
 Route::get('Show_attachment/{studentsname}/{filename}', 'StudentController@Show_attachment')->name('Show_attachment');
+Route::get('Download_attachment/{studentsname}/{filename}', 'StudentController@Download_attachment')->name('Download_attachment');
