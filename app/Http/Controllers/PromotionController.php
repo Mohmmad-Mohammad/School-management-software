@@ -44,7 +44,6 @@ class PromotionController extends Controller
         return $this->Promotion->edit($request);
     }
 
-
     public function destroy(Request $request)
     {
         return $this->Promotion->destroy($request);
