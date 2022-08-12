@@ -9,6 +9,7 @@ use App\Models\FeeInvoice;
 use App\Models\Grade;
 use App\Models\Student;
 use App\Models\StudentAccount;
+use App\Repository\Interfaces\FeeInvoicesRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 
 class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface

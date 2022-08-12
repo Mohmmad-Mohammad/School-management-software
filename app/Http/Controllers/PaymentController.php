@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Repository\PaymentRepositoryInterface;
+use App\Repository\Interfaces\PaymentRepositoryInterface as InterfacesPaymentRepositoryInterface;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -11,7 +11,7 @@ class PaymentController extends Controller
 
     protected $Payment;
 
-    public function __construct(PaymentRepositoryInterface $Payment)
+    public function __construct(InterfacesPaymentRepositoryInterface $Payment)
     {
         $this->Payment = $Payment;
     }

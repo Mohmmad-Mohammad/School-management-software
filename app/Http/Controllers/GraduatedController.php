@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Repository\Interfaces\StudentGraduatedRepositoryInterface as InterfacesStudentGraduatedRepositoryInterface;
 use App\Repository\StudentGraduatedRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,7 @@ class GraduatedController extends Controller
 {
     protected $Graduated;
 
-    public function __construct(StudentGraduatedRepositoryInterface $Graduated)
+    public function __construct(InterfacesStudentGraduatedRepositoryInterface $Graduated)
     {
         $this->Graduated = $Graduated;
     }

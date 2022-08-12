@@ -6,6 +6,7 @@ namespace App\Repository;
 
 use App\Models\Grade;
 use App\Models\Student;
+use App\Repository\Interfaces\StudentGraduatedRepositoryInterface;
 
 class StudentGraduatedRepository implements StudentGraduatedRepositoryInterface
 {

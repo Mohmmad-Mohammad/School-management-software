@@ -1,14 +1,14 @@
 <?php
 
 
-namespace App\Repository;
+namespace App\Repository\Interfaces;
 
 
-interface FeesRepositoryInterface
+interface PaymentRepositoryInterface
 {
     public function index();
 
-    public function create();
+    public function show($id);
 
     public function edit($id);
 

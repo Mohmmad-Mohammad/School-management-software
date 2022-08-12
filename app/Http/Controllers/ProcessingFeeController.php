@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Repository\ProcessingFeeRepositoryInterface;
+use App\Repository\Interfaces\ProcessingFeeRepositoryInterface;
 use Illuminate\Http\Request;
 
 class ProcessingFeeController extends Controller

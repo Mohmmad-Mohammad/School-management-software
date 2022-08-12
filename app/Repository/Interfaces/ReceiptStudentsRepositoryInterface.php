@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\Repository;
+namespace App\Repository\Interfaces;
 
 
-interface PaymentRepositoryInterface
+interface ReceiptStudentsRepositoryInterface
 {
     public function index();
 

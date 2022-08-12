@@ -7,6 +7,7 @@ use App\Models\FundAccount;
 use App\Models\PaymentStudent;
 use App\Models\Student;
 use App\Models\StudentAccount;
+use App\Repository\Interfaces\PaymentRepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 

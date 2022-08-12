@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Controllers\Controller;
+use App\Repository\Interfaces\ReceiptStudentsRepositoryInterface as InterfacesReceiptStudentsRepositoryInterface;
 use App\Repository\ReceiptStudentsRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,7 @@ class ReceiptStudentsController extends Controller
 {
     protected $Receipt;
 
-    public function __construct(ReceiptStudentsRepositoryInterface $Receipt)
+    public function __construct(InterfacesReceiptStudentsRepositoryInterface $Receipt)
     {
         $this->Receipt = $Receipt;
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Repository\Interfaces\StudentPromotionRepositoryInterface as InterfacesStudentPromotionRepositoryInterface;
 use App\Repository\StudentPromotionRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,7 @@ class PromotionController extends Controller
 {
 
     protected $Promotion;
-    public function __construct(StudentPromotionRepositoryInterface $Promotion)
+    public function __construct(InterfacesStudentPromotionRepositoryInterface $Promotion)
     {
         $this->Promotion = $Promotion;
     }

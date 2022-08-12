@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Repository\AttendanceRepositoryInterface;
+use App\Repository\Interfaces\AttendanceRepositoryInterface as InterfacesAttendanceRepositoryInterface;
 use Illuminate\Http\Request;
 
 class AttendanceController extends Controller
@@ -11,7 +11,7 @@ class AttendanceController extends Controller
 
     protected $Attendance;
 
-    public function __construct(AttendanceRepositoryInterface $Attendance)
+    public function __construct(InterfacesAttendanceRepositoryInterface $Attendance)
     {
         $this->Attendance = $Attendance;
     }

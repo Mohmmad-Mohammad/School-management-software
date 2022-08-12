@@ -8,6 +8,7 @@ use App\Models\Attendance;
 use App\Models\Grade;
 use App\Models\Student;
 use App\Models\Teacher;
+use App\Repository\Interfaces\AttendanceRepositoryInterface;
 
 class AttendanceRepository implements AttendanceRepositoryInterface
 {

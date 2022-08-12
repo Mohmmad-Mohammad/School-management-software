@@ -7,6 +7,7 @@ namespace App\Repository;
 use App\Models\ProcessingFee;
 use App\Models\Student;
 use App\Models\StudentAccount;
+use App\Repository\Interfaces\ProcessingFeeRepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 

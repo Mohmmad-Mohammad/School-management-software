@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Repository\FeeInvoicesRepositoryInterface;
+use App\Repository\Interfaces\FeeInvoicesRepositoryInterface as InterfacesFeeInvoicesRepositoryInterface;
 use Illuminate\Http\Request;
 
 class FeesInvoicesController extends Controller
 {
 
     protected $FeeInvoice;
-    public function __construct(FeeInvoicesRepositoryInterface $FeeInvoice)
+    public function __construct(InterfacesFeeInvoicesRepositoryInterface $FeeInvoice)
     {
         $this->FeeInvoice = $FeeInvoice;
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repository\Interfaces;
 
 interface TeacherRepositoryInterface{
 
@@ -26,5 +26,3 @@ interface TeacherRepositoryInterface{
     public function DeleteTeachers($request);
 
 }
-
-

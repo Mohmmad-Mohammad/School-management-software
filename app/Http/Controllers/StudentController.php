@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreStudentsRequest;
+use App\Repository\Interfaces\StudentRepositoryInterface as InterfacesStudentRepositoryInterface;
 use App\Repository\StudentRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class StudentController extends Controller
 
     protected $Student;
 
-    public function __construct(StudentRepositoryInterface $Student)
+    public function __construct(InterfacesStudentRepositoryInterface $Student)
     {
         $this->Student = $Student;
     }

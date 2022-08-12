@@ -7,6 +7,7 @@ namespace App\Repository;
 use App\Models\Grade;
 use App\Models\promotion;
 use App\Models\Student;
+use App\Repository\Interfaces\StudentPromotionRepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -72,7 +73,7 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
     public function destroy($request)
     {
         DB::beginTransaction();
-        
+
         try {
             // Back all
         if($request->page_id ==1){

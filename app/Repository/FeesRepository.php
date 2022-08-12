@@ -6,6 +6,7 @@ namespace App\Repository;
 
 use App\Models\Fee;
 use App\Models\Grade;
+use App\Repository\Interfaces\FeesRepositoryInterface;
 
 class FeesRepository implements FeesRepositoryInterface
 {

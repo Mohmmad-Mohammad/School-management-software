@@ -40,6 +40,9 @@ Route::get('/', function () {
         Route::resource('grades', 'GradeController');
         Route::resource('Classroom', 'ClassroomController');
         Route::resource('Section', 'SectionController');
+        Route::resource('subjects', 'SubjectController');
+        Route::resource('Quizzes', 'QuizzController');
+        Route::resource('questions', 'QuestionController');
         Route::post('delete_all','ClassroomController@delete_all')->name('delete_all');
         Route::post('Filter_Classes', 'ClassroomController@Filter_Classes')->name('Filter_Classes');
         Route::post('Upload_attachment', 'StudentController@Upload_attachment')->name('Upload_attachment');

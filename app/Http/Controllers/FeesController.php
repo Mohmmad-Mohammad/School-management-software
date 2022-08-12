@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFeesRequest;
 use App\Repository\FeesRepositoryInterface;
+use App\Repository\Interfaces\FeesRepositoryInterface as InterfacesFeesRepositoryInterface;
 use Illuminate\Http\Request;
 
 class FeesController extends Controller
 {
     protected $Fees;
 
-    public function __construct(FeesRepositoryInterface $Fees)
+    public function __construct(InterfacesFeesRepositoryInterface $Fees)
     {
         $this->Fees = $Fees;
     }
