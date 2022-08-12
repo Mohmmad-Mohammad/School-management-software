@@ -12,7 +12,7 @@ class CreateGradesTable extends Migration {
 			$table->id();
 			$table->timestamps();
 			$table->string('Name');
-			$table->string('Notes', 50);
+			$table->string('Notes', 50)->nullable();
 		});
 	}
 

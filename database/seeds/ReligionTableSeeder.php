@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ReligionTableSeeder extends Seeder
 {
@@ -11,7 +12,7 @@ class ReligionTableSeeder extends Seeder
      */
     public function run()
     {
-        \Illuminate\Support\Facades\DB::table('religions')->delete();
+       DB::table('religions')->delete();
 
         $religions = [
 

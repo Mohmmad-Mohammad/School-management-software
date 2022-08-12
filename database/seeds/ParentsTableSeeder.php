@@ -1,8 +1,12 @@
 <?php
 
 use App\Models\My_Parent;
+use App\Models\Nationalitie;
+use App\Models\Religion;
+use App\Models\Type_Blood;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class ParentsTableSeeder extends Seeder
 {

@@ -4,6 +4,7 @@ use App\Models\Classroom;
 use App\Models\Grade;
 use App\Models\Section;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SectionsTableSeeder extends Seeder
 {
@@ -18,11 +19,10 @@ class SectionsTableSeeder extends Seeder
         DB::table('sections')->delete();
 
         $Sections = [
-            ['en' => 'a', 'ar' => 'ا'],
-            ['en' => 'b', 'ar' => 'ب'],
-            ['en' => 'c', 'ar' => 'ت'],
+            ['en' => 'A', 'ar' => 'ا'],
+            ['en' => 'B', 'ar' => 'ب'],
+            ['en' => 'C', 'ar' => 'ت'],
         ];
-
         foreach ($Sections as $section) {
             Section::create([
                 'Name_Section' => $section,
@@ -32,4 +32,4 @@ class SectionsTableSeeder extends Seeder
             ]);
         }
     }
-    }
+}
