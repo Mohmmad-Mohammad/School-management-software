@@ -81,6 +81,15 @@
                                     @endfor
                                 </select>
                             </div>
+                            <div class="form-group col">
+                                <label for="inputZip">نوع الرسوم</label>
+                                <select class="custom-select mr-sm-2" name="Fee_type">
+                                    <option value="1">رسوم دراسية</option>
+                                    <option value="2">رسوم باص</option>
+                                    <option value="3"> غير ذالك </option>
+                                </select>
+                            </div>
+                        </div>
                         </div>
 
                         <div class="form-group">

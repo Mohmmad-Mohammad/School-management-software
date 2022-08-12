@@ -48,4 +48,5 @@ return [
     'StudentGraduation' => ' تخرج الطالب',
     'CurrentClass' => ' الفصل الحالي ',
     'UndoAll' => ' تراجع الكل ',
+    'Payment_students' => ' سند صرف ',
 ];

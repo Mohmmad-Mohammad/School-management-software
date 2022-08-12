@@ -50,6 +50,7 @@ return [
     'StudentGraduation' => 'Student Graduation',
     'CurrentClass' => 'Current Class ',
     'UndoAll' => ' Undo All  ',
+    'Payment_students'=> 'Payment voucher',
 
 
 ];
