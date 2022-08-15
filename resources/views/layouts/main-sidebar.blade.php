@@ -166,8 +166,6 @@
                             <li> <a href="{{route('questions.index')}}">قائمة الاسئلة</a> </li>
                         </ul>
                     </li>
-
-
                     <!-- library-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#library-icon">

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Repository\Interfaces\StudentGraduatedRepositoryInterface as InterfacesStudentGraduatedRepositoryInterface;
-use App\Repository\StudentGraduatedRepositoryInterface;
 use Illuminate\Http\Request;
 
 class GraduatedController extends Controller
