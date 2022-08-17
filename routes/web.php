@@ -25,6 +25,7 @@ Route::get('/', function () {
 
 });
         Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function(){ //...
+        Route::group(['middleware'=> ['auth']],function(){
         Route::get('/dashboard', 'HomeController@index')->name('home');
         Route::resource('Teachers', 'TeacherController');
         Route::resource('Students', 'StudentController');
@@ -43,6 +44,8 @@ Route::get('/', function () {
         Route::resource('subjects', 'SubjectController');
         Route::resource('Quizzes', 'QuizzController');
         Route::resource('questions', 'QuestionController');
+        Route::get('indirect', 'OnlineClasseController@indirectCreate')->name('indirect.indirectCreate');
+        Route::post('indirect', 'OnlineClasseController@storeIndirect')->name('indirect.storeIndirect');
         Route::post('delete_all','ClassroomController@delete_all')->name('delete_all');
         Route::post('Filter_Classes', 'ClassroomController@Filter_Classes')->name('Filter_Classes');
         Route::post('Upload_attachment', 'StudentController@Upload_attachment')->name('Upload_attachment');
@@ -53,7 +56,7 @@ Route::get('/', function () {
         Route::get('/classes/{id}', 'SectionController@getclasses');
         Route::get('/Get_classrooms/{id}', 'StudentController@Get_classrooms');
         Route::get('/Get_Sections/{id}', 'StudentController@Get_Sections');
-
+    });
 });
         Route::get('Show_attachment/{studentsname}/{filename}', 'StudentController@Show_attachment')->name('Show_attachment');
         Route::get('Download_attachment/{studentsname}/{filename}', 'StudentController@Download_attachment')->name('Download_attachment');
