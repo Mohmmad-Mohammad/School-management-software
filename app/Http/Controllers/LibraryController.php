@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Repository\Interfaces\LibraryRepositoryInterface as InterfacesLibraryRepositoryInterface;
 use App\Repository\LibraryRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,7 @@ class LibraryController extends Controller
 
     protected $library;
 
-    public function __construct(LibraryRepositoryInterface $library)
+    public function __construct(InterfacesLibraryRepositoryInterface $library)
     {
         $this->library = $library;
     }

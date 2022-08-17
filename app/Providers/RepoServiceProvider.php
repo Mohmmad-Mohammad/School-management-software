@@ -26,6 +26,7 @@ class RepoServiceProvider extends ServiceProvider
         $this->app->bind('App\Repository\Interfaces\SubjectRepositoryInterface', 'App\Repository\SubjectRepository');
         $this->app->bind('App\Repository\Interfaces\QuizzRepositoryInterface', 'App\Repository\QuizzRepository');
         $this->app->bind('App\Repository\Interfaces\QuestionRepositoryInterface', 'App\Repository\QuestionRepository');
+        $this->app->bind('App\Repository\Interfaces\LibraryRepositoryInterface', 'App\Repository\LibraryRepository');
     }
     /**
      * Bootstrap services.

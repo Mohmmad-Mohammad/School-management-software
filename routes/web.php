@@ -44,7 +44,8 @@ Route::get('/', function () {
         Route::resource('subjects', 'SubjectController');
         Route::resource('Quizzes', 'QuizzController');
         Route::resource('questions', 'QuestionController');
-        Route::get('indirect', 'OnlineClasseController@indirectCreate')->name('indirect.indirectCreate');
+        Route::resource('library', 'LibraryController');
+
         Route::post('indirect', 'OnlineClasseController@storeIndirect')->name('indirect.storeIndirect');
         Route::post('delete_all','ClassroomController@delete_all')->name('delete_all');
         Route::post('Filter_Classes', 'ClassroomController@Filter_Classes')->name('Filter_Classes');
@@ -53,10 +54,13 @@ Route::get('/', function () {
         Route::post('Delete_attachment', 'StudentController@Delete_attachment')->name('Delete_attachment');
         Route::post('Promotion.edit/{id}', 'PromotionController@edit')->name('Promotion.edit');
         Route::view('add_parent', 'livewire.show_Form');
+
+    });
+});
+        Route::get('download_file/{filename}', 'LibraryController@downloadAttachment')->name('downloadAttachment');
+        Route::get('indirect', 'OnlineClasseController@indirectCreate')->name('indirect.indirectCreate');
         Route::get('/classes/{id}', 'SectionController@getclasses');
         Route::get('/Get_classrooms/{id}', 'StudentController@Get_classrooms');
         Route::get('/Get_Sections/{id}', 'StudentController@Get_Sections');
-    });
-});
         Route::get('Show_attachment/{studentsname}/{filename}', 'StudentController@Show_attachment')->name('Show_attachment');
         Route::get('Download_attachment/{studentsname}/{filename}', 'StudentController@Download_attachment')->name('Download_attachment');
