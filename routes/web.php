@@ -45,7 +45,8 @@ Route::get('/', function () {
         Route::resource('Quizzes', 'QuizzController');
         Route::resource('questions', 'QuestionController');
         Route::resource('library', 'LibraryController');
-
+        Route::resource('settings', 'SettingController');
+        
         Route::post('indirect', 'OnlineClasseController@storeIndirect')->name('indirect.storeIndirect');
         Route::post('delete_all','ClassroomController@delete_all')->name('delete_all');
         Route::post('Filter_Classes', 'ClassroomController@Filter_Classes')->name('Filter_Classes');
