@@ -8,17 +8,7 @@
     <meta name="description" content="Webmin - Bootstrap 4 & Angular 5 Admin Dashboard Template" />
     <meta name="author" content="potenzaglobalsolutions.com" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>برنامج  لادارة المدارس</title>
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-
-    <!-- Font -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Poppins:200,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900">
-
-    <!-- css -->
-    <link href="{{ URL::asset('assets/css/rtl.css') }}" rel="stylesheet">
+    @include('layouts.head')
 
 </head>
 
@@ -57,23 +47,10 @@
 
         <!--=================================
  login-->
-
     </div>
     <!-- jquery -->
-    <script src="{{ URL::asset('assets/js/jquery-3.3.1.min.js') }}"></script>
-    <!-- plugins-jquery -->
-    <script src="{{ URL::asset('assets/js/plugins-jquery.js') }}"></script>
-    <!-- plugin_path -->
-    <script>
-        var plugin_path = 'js/';
+    @include('layouts.footer-scripts')
 
-    </script>
-
-
-    <!-- toastr -->
-    @yield('js')
-    <!-- custom -->
-    <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
 
 </body>
 

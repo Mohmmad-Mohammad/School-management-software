@@ -25,7 +25,7 @@ Route::get('/login/{type}','LoginController@loginForm')->middleware('guest')->na
 
 Route::post('/login','LoginController@login')->name('login');
 
-// Route::post('/logout/{type}','LoginController@logout')->name('logout');
+Route::get('/logout/{type}','LoginController@logout')->name('logout');
 
 
 
