@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -14,19 +13,26 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
-Route::group(['middleware'=> ['guest']],function(){
+// Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('selection');
+
+Route::get('/dashboard', 'HomeController@dashboard')->name('home')->middleware('auth');
+
+Route::group(['namespace' => 'Auth'], function () {
+
+Route::get('/login/{type}','LoginController@loginForm')->middleware('guest')->name('login.show');
+
+Route::post('/login','LoginController@login')->name('login');
+
+// Route::post('/logout/{type}','LoginController@logout')->name('logout');
 
 
-Route::get('/', function () {
-    return view('auth.login');
 
 });
 
-});
         Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function(){ //...
-        Route::group(['middleware'=> ['auth']],function(){
-        Route::get('/dashboard', 'HomeController@index')->name('home');
+        // Route::group(['middleware'=> ['auth']],function(){
         Route::resource('Teachers', 'TeacherController');
         Route::resource('Students', 'StudentController');
         Route::resource('online_classes', 'OnlineClasseController');
@@ -46,7 +52,7 @@ Route::get('/', function () {
         Route::resource('questions', 'QuestionController');
         Route::resource('library', 'LibraryController');
         Route::resource('settings', 'SettingController');
-        
+
         Route::post('indirect', 'OnlineClasseController@storeIndirect')->name('indirect.storeIndirect');
         Route::post('delete_all','ClassroomController@delete_all')->name('delete_all');
         Route::post('Filter_Classes', 'ClassroomController@Filter_Classes')->name('Filter_Classes');
@@ -57,7 +63,7 @@ Route::get('/', function () {
         Route::view('add_parent', 'livewire.show_Form');
 
     });
-});
+// });
         Route::get('download_file/{filename}', 'LibraryController@downloadAttachment')->name('downloadAttachment');
         Route::get('indirect', 'OnlineClasseController@indirectCreate')->name('indirect.indirectCreate');
         Route::get('/classes/{id}', 'SectionController@getclasses');
