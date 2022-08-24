@@ -34,8 +34,8 @@
                             @foreach ($sections as $section)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $section->Grades->Name }}</td>
-                                    <td>{{ $section->Name_Section }}</td>
+                                    <td>{{ $section->Grades->name }}</td>
+                                    <td>{{ $section->name_section }}</td>
                                 </tr>
                             @endforeach
                         </table>

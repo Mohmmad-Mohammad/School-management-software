@@ -17,7 +17,7 @@ class CreateParentAttachmentsTable extends Migration
             $table->id();
             $table->string('file_name')->nullable();
             $table->bigInteger('parent_id')->unsigned();
-            $table->foreign('parent_id')->references('id')->on('my__parents')->onDelete('cascade');
+            $table->foreign('parent_id')->references('id')->on('myparents')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -21,7 +21,7 @@ class GenderTableSeeder extends Seeder
 
         ];
         foreach ($genders as $ge) {
-            Gender::create(['Name' => $ge]);
+            Gender::create(['name' => $ge]);
         }
     }
 }

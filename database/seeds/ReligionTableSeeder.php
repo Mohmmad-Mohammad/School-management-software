@@ -32,7 +32,7 @@ class ReligionTableSeeder extends Seeder
         ];
 
         foreach ($religions as $R) {
-            \App\Models\Religion::create(['Name' => $R]);
+            \App\Models\Religion::create(['name' => $R]);
         }
     }
 }

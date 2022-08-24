@@ -75,8 +75,8 @@
                             <tr>
                                 <td>{{ $loop->index+1 }}</td>
                                 <td>{{$student->students->name}}</td>
-                                <td>{{$student->grade->Name}}</td>
-                                <td>{{$student->section->Name_Section}}</td>
+                                <td>{{$student->grade->name}}</td>
+                                <td>{{$student->section->name_section}}</td>
                                 <td>{{$student->attendence_date}}</td>
                                 <td>
 

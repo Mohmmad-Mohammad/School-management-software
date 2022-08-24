@@ -41,8 +41,8 @@ class OnlineClasseController extends Controller
 
             OnlineClasse::create([
                 'integration' => true,
-                'Grade_id' => $request->Grade_id,
-                'Classroom_id' => $request->Classroom_id,
+                'grade_id' => $request->Grade_id,
+                'classroom_id' => $request->Classroom_id,
                 'section_id' => $request->section_id,
                 'user_id' => auth()->user()->id,
                 'meeting_id' => $meeting->id,
@@ -68,8 +68,8 @@ class OnlineClasseController extends Controller
         try {
             OnlineClasse::create([
                 'integration' => false,
-                'Grade_id' => $request->Grade_id,
-                'Classroom_id' => $request->Classroom_id,
+                'grade_id' => $request->Grade_id,
+                'classroom_id' => $request->Classroom_id,
                 'section_id' => $request->section_id,
                 'user_id' => auth()->user()->id,
                 'meeting_id' => $request->meeting_id,

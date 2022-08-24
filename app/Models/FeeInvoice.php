@@ -7,15 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class FeeInvoice extends Model
 {
     protected $table = "feeinvoices";
-    
+
     public function grade()
     {
-        return $this->belongsTo('App\Models\Grade', 'Grade_id');
+        return $this->belongsTo('App\Models\Grade', 'grade_id');
     }
 
     public function classroom()
     {
-        return $this->belongsTo('App\Models\Classroom', 'Classroom_id');
+        return $this->belongsTo('App\Models\Classroom', 'classroom_id');
     }
 
 

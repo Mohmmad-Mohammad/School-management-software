@@ -1248,7 +1248,7 @@ class NationalitieTableSeeder extends Seeder
         ];
 
         foreach ($nationals as $n) {
-            \App\Models\Nationalitie::create(['Name' => $n]);
+            \App\Models\Nationalitie::create(['name' => $n]);
         }
 
     }

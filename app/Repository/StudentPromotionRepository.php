@@ -30,8 +30,8 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
     {
         DB::beginTransaction();
         try {
-            $students = student::where('Grade_id',$request->Grade_id)
-                ->where('Classroom_id',$request->Classroom_id)
+            $students = student::where('grade_id',$request->Grade_id)
+                ->where('classroom_id',$request->Classroom_id)
                 ->where('section_id',$request->section_id)
                 ->where('academic_year',$request->academic_year)
                 ->get();
@@ -43,8 +43,8 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                 $ids = explode(',',$student->id);
                 student::whereIn('id', $ids)
                     ->update([
-                        'Grade_id'=>$request->Grade_id_new,
-                        'Classroom_id'=>$request->Classroom_id_new,
+                        'grade_id'=>$request->Grade_id_new,
+                        'classroom_id'=>$request->Classroom_id_new,
                         'section_id'=>$request->section_id_new,
                         'academic_year'=>$request->academic_year_new,
                     ]);
@@ -83,8 +83,8 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                 $ids = explode(',',$Promotion->student_id);
                 student::whereIn('id', $ids)
                 ->update([
-                    'Grade_id'=>$Promotion->from_grade,
-                    'Classroom_id'=>$Promotion->from_Classroom,
+                    'grade_id'=>$Promotion->from_grade,
+                    'classroom_id'=>$Promotion->from_Classroom,
                     'section_id'=> $Promotion->from_section,
                     'academic_year'=>$Promotion->academic_year,
             ]);
@@ -100,8 +100,8 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                 $Promotion = Promotion::findorfail($request->id);
                 student::where('id', $Promotion->student_id)
                     ->update([
-                        'Grade_id'=>$Promotion->from_grade,
-                        'Classroom_id'=>$Promotion->from_Classroom,
+                        'grade_id'=>$Promotion->from_grade,
+                        'classroom_id'=>$Promotion->from_Classroom,
                         'section_id'=> $Promotion->from_section,
                         'academic_year'=>$Promotion->academic_year,
                     ]);

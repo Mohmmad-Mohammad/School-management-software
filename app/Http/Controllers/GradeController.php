@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\GradeRequest;
+use App\Models\Classroom;
 use App\Models\Grade;
 // use Grade\Grade as GradeGrade;
 use Illuminate\Http\Request;
@@ -38,13 +39,13 @@ class GradeController extends Controller
    */
   public function store(GradeRequest $request)
   {
-    if (Grade::where('Name->ar', $request->Name)->orWhere('Name->en',$request->Name)->exists()){
+    if (Grade::where('name->ar', $request->Name)->orWhere('name->en',$request->Name)->exists()){
         return redirect()->back()->withErrors(['error'=> trans('Grades_trans.exists')]);
     }
     try {
     $grade = new Grade();
     $grade ->Name = ['en'=>$request->Name_en,'ar'=>$request->Name];
-    $grade->Notes = $request->Notes;
+    $grade->notes = $request->Notes;
     $grade->save();
     toastr()->success(trans('messages.success'));
     return redirect()->back();
@@ -85,11 +86,11 @@ class GradeController extends Controller
   {
 
        try {
-       $validated = $request->validated();
+       $request->validated();
        $Grades = Grade::findOrFail($request->id);
        $Grades->update([
          $Grades->Name = ['ar' => $request->Name, 'en' => $request->Name_en],
-         $Grades->Notes = $request->Notes,
+         $Grades->notes = $request->notes,
        ]);
        toastr()->success(trans('messages.Update'));
        return redirect()->route('grades.index');
@@ -106,25 +107,25 @@ class GradeController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function destroy(Request $request)
-  {
-      try {
-          $MyClass_id = Classroom::where('Grade_id',$request->id)->pluck('Grade_id');
-          if($MyClass_id->count() == 0){
+    public function destroy(Request $request)
+    {
+    try {
+        $MyClass_id = Classroom::where('grade_id',$request->id)->pluck('grade_id');
+        if($MyClass_id->count() == 0){
 
-              $grades = Grade::findOrFail($request->id)->delete();
-              toastr()->error(trans('messages.Delete'));
-              return redirect()->route('grades.index');
-          }  else {
-              toastr()->error(trans('Grades_trans.delete_Grade_Error'));
-              return redirect()->route('Grades.index');
-          }
-      }catch (\Exception $e){
-          return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            Grade::findOrFail($request->id)->delete();
+            toastr()->error(trans('messages.Delete'));
+            return redirect()->route('grades.index');
+        }  else {
+            toastr()->error(trans('Grades_trans.delete_Grade_Error'));
+            return redirect()->route('Grades.index');
+        }
+    }catch (\Exception $e){
+        return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
-      }
+    }
 
-  }
+}
 
 }
 

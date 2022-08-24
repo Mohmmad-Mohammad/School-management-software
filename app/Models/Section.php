@@ -8,15 +8,15 @@ use Spatie\Translatable\HasTranslations;
 class Section extends Model
 {
     use HasTranslations;
-    public $translatable = ['Name_Section'];
-    protected $fillable=['Name_Section','Grade_id','Class_id'];
+    public $translatable = ['name_section'];
+    protected $fillable=['name_section','grade_id','class_id'];
 
     protected $table = 'sections';
     public $timestamps = true;
 
     public function My_classs()
     {
-        return $this->belongsTo('App\Models\Classroom', 'Class_id');
+        return $this->belongsTo('App\Models\Classroom', 'class_id');
     }
 
 
@@ -27,6 +27,6 @@ class Section extends Model
 
     public function Grades()
     {
-        return $this->belongsTo('App\Models\Grade','Grade_id');
+        return $this->belongsTo('App\Models\Grade','grade_id');
     }
 }

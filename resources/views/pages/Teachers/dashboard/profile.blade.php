@@ -27,7 +27,7 @@
                             <img src="{{URL::asset('assets/images/teacher.png')}}"
                                  alt="avatar"
                                  class="rounded-circle img-fluid" style="width: 150px;">
-                            <h5 style="font-family: Cairo" class="my-3">{{$information->Name}}</h5>
+                            <h5 style="font-family: Cairo" class="my-3">{{$information->name}}</h5>
                             <p class="text-muted mb-1">{{$information->email}}</p>
                             <p class="text-muted mb-4">معلم</p>
                         </div>
@@ -73,7 +73,7 @@
                                             <input type="password" id="password" class="form-control" name="password">
                                         </p><br><br>
                                         <input type="checkbox" class="form-check-input" onclick="myFunction()"
-                                               id="exampleCheck1">
+                                            id="exampleCheck1">
                                         <label class="form-check-label" for="exampleCheck1">اظهار كلمة المرور</label>
                                     </div>
                                 </div>

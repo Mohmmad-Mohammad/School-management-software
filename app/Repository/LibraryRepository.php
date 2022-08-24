@@ -30,7 +30,7 @@ class LibraryRepository implements LibraryRepositoryInterface
             $books = new Library();
             $books->title = $request->title;
             $books->file_name =  $request->file('file_name')->getClientOriginalName();
-            $books->Grade_id = $request->Grade_id;
+            $books->grade_id = $request->Grade_id;
             $books->classroom_id = $request->Classroom_id;
             $books->section_id = $request->section_id;
             $books->teacher_id = 1;
@@ -68,7 +68,7 @@ class LibraryRepository implements LibraryRepositoryInterface
                 $book->file_name = $book->file_name !== $file_name_new ? $file_name_new : $book->file_name;
             }
 
-            $book->Grade_id = $request->Grade_id;
+            $book->grade_id = $request->Grade_id;
             $book->classroom_id = $request->Classroom_id;
             $book->section_id = $request->section_id;
             $book->teacher_id = 1;

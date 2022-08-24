@@ -9,17 +9,17 @@ class OnlineClasse extends Model
 {
     //    protected $guarded=[];
     public $table = 'online_classes';
-     public $fillable= ['integration','Grade_id','Classroom_id','section_id','user_id','meeting_id','topic','start_at','duration','password','start_url','join_url',];
+     public $fillable= ['integration','grade_id','vlassroom_id','section_id','user_id','meeting_id','topic','start_at','duration','password','start_url','join_url',];
 
     public function grade()
     {
-        return $this->belongsTo('App\Models\Grade', 'Grade_id');
+        return $this->belongsTo('App\Models\Grade', 'grade_id');
     }
 
 
     public function classroom()
     {
-        return $this->belongsTo('App\Models\Classroom', 'Classroom_id');
+        return $this->belongsTo('App\Models\Classroom', 'vlassroom_id');
     }
 
 

@@ -41,7 +41,7 @@
             <div class="page-title" >
                 <div class="row">
                     <div class="col-sm-6" >
-                        <h4 class="mb-0" style="font-family: 'Cairo', sans-serif">مرحبا بك : {{auth()->user()->Name}}</h4>
+                        <h4 class="mb-0" style="font-family: 'Cairo', sans-serif">مرحبا بك : {{auth()->user()->name}}</h4>
                     </div><br><br>
                     <div class="col-sm-6">
                         <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right">
@@ -66,7 +66,7 @@
                                 </div>
                             </div>
                             <p class="text-muted pt-3 mb-0 mt-2 border-top">
-                                <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a href="{{route('student.index')}}" target="_blank"><span class="text-danger">عرض البيانات</span></a>
+                                <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a href="{{Route('students.index')}}" target="_blank"><span class="text-danger">عرض البيانات</span></a>
                             </p>
                         </div>
                     </div>
@@ -82,11 +82,11 @@
                                 </div>
                                 <div class="float-right text-right">
                                     <p class="card-text text-dark">عدد الاقسام</p>
-                                    <h4>{{$count_sections}}</h4>
+                                    <h4>{{$count_section}}</h4>
                                 </div>
                             </div>
                             <p class="text-muted pt-3 mb-0 mt-2 border-top">
-                                <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a href="{{route('sections')}}" target="_blank"><span class="text-danger">عرض البيانات</span></a>
+                                <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a href="{{Route('sections')}}" ><span class="text-danger">عرض البيانات</span></a>
                             </p>
                         </div>
                     </div>
@@ -159,10 +159,10 @@
                                                         <td>{{$loop->iteration}}</td>
                                                         <td>{{$student->name}}</td>
                                                         <td>{{$student->email}}</td>
-                                                        <td>{{$student->gender->Name}}</td>
-                                                        <td>{{$student->grade->Name}}</td>
-                                                        <td>{{$student->classroom->Name_Class}}</td>
-                                                        <td>{{$student->section->Name_Section}}</td>
+                                                        <td>{{$student->gender->name}}</td>
+                                                        <td>{{$student->grade->name}}</td>
+                                                        <td>{{$student->classroom->name_class}}</td>
+                                                        <td>{{$student->section->name_section}}</td>
                                                         <td class="text-success">{{$student->created_at}}</td>
                                                         @empty
                                                             <td class="alert-danger" colspan="8">لاتوجد بيانات</td>
@@ -192,10 +192,10 @@
                                                     <tbody>
                                                     <tr>
                                                         <td>{{$loop->iteration}}</td>
-                                                        <td>{{$teacher->Name}}</td>
-                                                        <td>{{$teacher->genders->Name}}</td>
-                                                        <td>{{$teacher->Joining_Date}}</td>
-                                                        <td>{{$teacher->specializations->Name}}</td>
+                                                        <td>{{$teacher->name}}</td>
+                                                        <td>{{$teacher->genders->name}}</td>
+                                                        <td>{{$teacher->joining_Date}}</td>
+                                                        <td>{{$teacher->specializations->name}}</td>
                                                         <td class="text-success">{{$teacher->created_at}}</td>
                                                         @empty
                                                             <td class="alert-danger" colspan="8">لاتوجد بيانات</td>
@@ -221,13 +221,13 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @forelse(\App\Models\My_Parent::latest()->take(5)->get() as $parent)
+                                                @forelse(\App\Models\MyParent::latest()->take(5)->get() as $parent)
                                                     <tr>
                                                         <td>{{$loop->iteration}}</td>
-                                                        <td>{{$parent->Name_Father}}</td>
+                                                        <td>{{$parent->name_father}}</td>
                                                         <td>{{$parent->email}}</td>
-                                                        <td>{{$parent->National_ID_Father}}</td>
-                                                        <td>{{$parent->Phone_Father}}</td>
+                                                        <td>{{$parent->national_ID_father}}</td>
+                                                        <td>{{$parent->phone_father}}</td>
                                                         <td class="text-success">{{$parent->created_at}}</td>
                                                         @empty
                                                             <td class="alert-danger" colspan="8">لاتوجد بيانات</td>
@@ -249,18 +249,22 @@
                                                     <th>اسم الطالب</th>
                                                     <th>المرحلة الدراسية</th>
                                                     <th>الصف الدراسي</th>
-                                                    <th>القسم</th>
                                                     <th>نوع الرسوم</th>
                                                     <th>المبلغ</th>
                                                     <th>تاريخ الاضافة</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @forelse(\App\Models\Fee_invoice::latest()->take(10)->get() as $section)
+                                                @forelse(\App\Models\FeeInvoice::latest()->take(10)->get() as $section)
                                                     <tr>
                                                         <td>{{$loop->iteration}}</td>
                                                         <td>{{$section->invoice_date}}</td>
-                                                        <td>{{$section->My_classs->Name_Class}}</td>
+                                                        <td>{{$section->student->name}}</td>
+                                                        <td>{{$section->grade->name}}</td>
+                                                        <td>{{$section->classroom->name_class}}</td>
+                                                        {{-- <td>{{$section->section->name_section}}</td> --}}
+                                                        <td>{{$section->fees->title}}</td>
+                                                        <td>{{$section->amount}}</td>
                                                         <td class="text-success">{{$section->created_at}}</td>
                                                     </tr>
                                                 @empty

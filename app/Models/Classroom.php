@@ -8,14 +8,14 @@ use Spatie\Translatable\HasTranslations;
 class Classroom extends Model
 {
 use HasTranslations;
-    protected $translatable = ['Name_Class'];
-    protected $table = 'Classrooms';
-    protected $fillable=['Name_Class','Grade_id'];
+    protected $translatable = ['name_class'];
+    protected $table = 'classrooms';
+    protected $fillable=['name_class','grade_id'];
     public $timestamps = true;
 
     public function Grades()
     {
-        return $this->belongsTo('App\Models\Grade', 'Grade_id');
+        return $this->belongsTo('App\Models\Grade', 'grade_id');
     }
 
 }

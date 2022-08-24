@@ -43,10 +43,10 @@
                                             <tr>
                                                 <td>{{ $loop->iteration}}</td>
                                                 <td>{{$book->title}}</td>
-                                                <td>{{$book->teacher->Name}}</td>
-                                                <td>{{$book->grade->Name}}</td>
-                                                <td>{{$book->classroom->Name_Class}}</td>
-                                                <td>{{$book->section->Name_Section}}</td>
+                                                <td>{{$book->teacher->name}}</td>
+                                                <td>{{$book->grade->name}}</td>
+                                                <td>{{$book->classroom->name_class}}</td>
+                                                <td>{{$book->section->name_section}}</td>
                                                 <td>
                                                     <a href="{{route('downloadAttachment',$book->file_name)}}" title="تحميل الكتاب" class="btn btn-warning btn-sm" role="button" aria-pressed="true"><i class="fas fa-download"></i></a>
                                                     <a href="{{route('library.edit',$book->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>

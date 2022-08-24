@@ -26,7 +26,7 @@ class SpecializationsTableSeeder extends Seeder
             ['en'=> 'Nationalism', 'ar'=> 'قومية'],
         ];
         foreach ($specializations as $S) {
-            Specialization::create(['Name' => $S]);
+            Specialization::create(['name' => $S]);
         }
     }
 }

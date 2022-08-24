@@ -24,10 +24,10 @@ class CreatePromotionsTable extends Migration
             $table->unsignedBigInteger('from_section');
             $table->foreign('from_section')->references('id')->on('sections')->onDelete('cascade');
             $table->unsignedBigInteger('to_grade');
-            $table->foreign('to_grade')->references('id')->on('Grades')->onDelete('cascade');
+            $table->foreign('to_grade')->references('id')->on('grades')->onDelete('cascade');
             $table->unsignedBigInteger('to_Classroom');
             $table->unsignedBigInteger('to_section');
-            $table->foreign('to_Classroom')->references('id')->on('Classrooms')->onDelete('cascade');
+            $table->foreign('to_Classroom')->references('id')->on('classrooms')->onDelete('cascade');
             $table->foreign('to_section')->references('id')->on('sections')->onDelete('cascade');
             $table->string('academic_year');
             $table->string('academic_year_new');

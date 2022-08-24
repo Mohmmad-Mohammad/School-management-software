@@ -52,7 +52,7 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
             $students_accounts->type = 'ProcessingFee';
             $students_accounts->student_id = $request->student_id;
             $students_accounts->processing_id = $ProcessingFee->id;
-            $students_accounts->Debit = 0.00;
+            $students_accounts->debit = 0.00;
             $students_accounts->credit = $request->Debit;
             $students_accounts->description = $request->description;
             $students_accounts->save();
@@ -86,7 +86,7 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
             $students_accounts->type = 'ProcessingFee';
             $students_accounts->student_id = $request->student_id;
             $students_accounts->processing_id = $ProcessingFee->id;
-            $students_accounts->Debit = 0.00;
+            $students_accounts->debit = 0.00;
             $students_accounts->credit = $request->Debit;
             $students_accounts->description = $request->description;
             $students_accounts->save();

@@ -7,6 +7,7 @@ use App\Models\Gender;
 use App\Models\Grade;
 use App\Models\Image;
 use App\Models\My_Parent;
+use App\Models\MyParent;
 use App\Models\Nationalitie;
 use App\Models\Section;
 use App\Models\Student;
@@ -29,7 +30,7 @@ class StudentRepository implements StudentRepositoryInterface
     public function Edit_Student($id)
     {
         $data['Grades'] = Grade::all();
-        $data['parents'] = My_Parent::all();
+        $data['parents'] = MyParent::all();
         $data['Genders'] = Gender::all();
         $data['nationals'] = Nationalitie::all();
         $data['bloods'] = Type_Blood::all();
@@ -41,15 +42,15 @@ class StudentRepository implements StudentRepositoryInterface
     {
         try {
             $Edit_Students = Student::findorfail($request->id);
-            $Edit_Students->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
+            $Edit_Students->name = ['en' => $request->name_en, 'ar' => $request->name_ar];
             $Edit_Students->email = $request->email;
             $Edit_Students->password = Hash::make($request->password);
             $Edit_Students->gender_id = $request->gender_id;
             $Edit_Students->nationalitie_id = $request->nationalitie_id;
             $Edit_Students->blood_id = $request->blood_id;
-            $Edit_Students->Date_Birth = $request->Date_Birth;
-            $Edit_Students->Grade_id = $request->Grade_id;
-            $Edit_Students->Classroom_id = $request->Classroom_id;
+            $Edit_Students->date_Birth = $request->Date_Birth;
+            $Edit_Students->grade_id = $request->Grade_id;
+            $Edit_Students->classroom_id = $request->Classroom_id;
             $Edit_Students->section_id = $request->section_id;
             $Edit_Students->parent_id = $request->parent_id;
             $Edit_Students->academic_year = $request->academic_year;
@@ -65,7 +66,7 @@ class StudentRepository implements StudentRepositoryInterface
     public function Create_Student()
     {
         $data['my_classes'] = Grade::all();
-        $data['parents'] = My_Parent::all();
+        $data['parents'] = MyParent::all();
         $data['Genders'] = Gender::all();
         $data['nationals'] = Nationalitie::all();
         $data['bloods'] = Type_Blood::all();
@@ -80,14 +81,14 @@ class StudentRepository implements StudentRepositoryInterface
 
     public function Get_classrooms($id)
     {
-        $list_classes = Classroom::where("Grade_id", $id)->pluck("Name_Class", "id");
+        $list_classes = Classroom::where("grade_id", $id)->pluck("name_class", "id");
         return $list_classes;
     }
 
     //Get Sections
     public function Get_Sections($id)
     {
-        $list_sections = Section::where("Class_id", $id)->pluck("Name_Section", "id");
+        $list_sections = Section::where("class_id", $id)->pluck("name_section", "id");
         return $list_sections;
     }
 
@@ -102,9 +103,9 @@ class StudentRepository implements StudentRepositoryInterface
             $students->gender_id = $request->gender_id;
             $students->nationalitie_id = $request->nationalitie_id;
             $students->blood_id = $request->blood_id;
-            $students->Date_Birth = $request->Date_Birth;
-            $students->Grade_id = $request->Grade_id;
-            $students->Classroom_id = $request->Classroom_id;
+            $students->date_Birth = $request->Date_Birth;
+            $students->grade_id = $request->Grade_id;
+            $students->classroom_id = $request->Classroom_id;
             $students->section_id = $request->section_id;
             $students->parent_id = $request->parent_id;
             $students->academic_year = $request->academic_year;

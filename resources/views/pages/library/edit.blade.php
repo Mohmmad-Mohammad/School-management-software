@@ -51,7 +51,7 @@
                                             <select class="custom-select mr-sm-2" name="Grade_id">
                                                 <option selected disabled>{{trans('Parent_trans.Choose')}}...</option>
                                                 @foreach($grades as $grade)
-                                                    <option  value="{{ $grade->id }}" {{$book->Grade_id == $grade->id ?'selected':''}}>{{ $grade->Name }}</option>
+                                                    <option  value="{{ $grade->id }}" {{$book->Grade_id == $grade->id ?'selected':''}}>{{ $grade->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -61,7 +61,7 @@
                                         <div class="form-group">
                                             <label for="Classroom_id">{{trans('Students_trans.classrooms')}} : <span class="text-danger">*</span></label>
                                             <select class="custom-select mr-sm-2" name="Classroom_id">
-                                              <option value="{{$book->Classroom_id}}">{{$book->classroom->Name_Class}}</option>
+                                              <option value="{{$book->Classroom_id}}">{{$book->classroom->name_class}}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -70,7 +70,7 @@
                                         <div class="form-group">
                                             <label for="section_id">{{trans('Students_trans.section')}} : </label>
                                             <select class="custom-select mr-sm-2" name="section_id">
-                                                <option value="{{$book->section_id}}">{{$book->section->Name_Section}}</option>
+                                                <option value="{{$book->section_id}}">{{$book->section->name_section}}</option>
                                             </select>
                                         </div>
                                     </div>

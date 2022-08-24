@@ -43,8 +43,8 @@ class ClassroomController extends Controller
      try {
         foreach ($List_Classes as $List_Class) {
             $My_Classes = new Classroom();
-            $My_Classes->Name_Class = ['en' => $List_Class['Name_class_en'], 'ar' => $List_Class['Name']];
-            $My_Classes->Grade_id = $List_Class['Grade_id'];
+            $My_Classes->name_class = ['en' => $List_Class['name_class_en'], 'ar' => $List_Class['name']];
+            $My_Classes->grade_id = $List_Class['Grade_id'];
             $My_Classes->save();
         }
         toastr()->success(trans('messages.success'));
@@ -82,30 +82,29 @@ class ClassroomController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update(Request $request)
-  {
-      try {
+    public function update(Request $request)
+    {
+        try {
 
-          $Classrooms = Classroom::findOrFail($request->id);
+        $Classrooms = Classroom::findOrFail($request->id);
 
-          $Classrooms->update([
+        $Classrooms->update([
 
-              $Classrooms->Name_Class = ['ar' => $request->Name, 'en' => $request->Name_en],
-              $Classrooms->Grade_id = $request->Grade_id,
-          ]);
-          toastr()->success(trans('messages.Update'));
-          return redirect()->route('Classroom.index');
-      }
+            $Classrooms->name_class = ['ar' => $request->Name, 'en' => $request->Name_en],
+            $Classrooms->grade_id = $request->Grade_id,
+        ]);
+        toastr()->success(trans('messages.Update'));
+        return redirect()->route('Classroom.index');
+    }
 
-      catch
-      (\Exception $e) {
-          return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-      }
+    catch
+    (\Exception $e) {
+        return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+    }
 
 
-  }
-
-  /**
+}
+/**
    * Remove the specified resource from storage.
    *
    * @param  int  $id
@@ -131,7 +130,7 @@ class ClassroomController extends Controller
     public function Filter_Classes(Request $request)
     {
         $Grades = Grade::all();
-        $Search = Classroom::select('*')->where('Grade_id','=',$request->Grade_id)->get();
+        $Search = Classroom::select('*')->where('grade_id','=',$request->grade_id)->get();
         return view('pages.My_Classes.My_Classes',compact('Grades'))->withDetails($Search);
 
     }

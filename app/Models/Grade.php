@@ -8,13 +8,13 @@ use Spatie\Translatable\HasTranslations;
 class Grade extends Model
 {
     use HasTranslations;
-    protected $translatable = ['Name'];
-    protected $fillable =['Name','Notes'];
-    protected $table = 'Grades';
+    protected $translatable = ['name'];
+    protected $fillable =['name','notes'];
+    protected $table = 'grades';
     public $timestamps = true;
 
     public function Sections()
     {
-        return $this->hasMany('App\Models\Section', 'Grade_id');
+        return $this->hasMany('App\Models\Section', 'grade_id');
     }
 }

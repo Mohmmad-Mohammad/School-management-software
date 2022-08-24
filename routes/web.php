@@ -15,25 +15,26 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 */
 // Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('selection');
 
-Route::get('/dashboard', 'HomeController@dashboard')->name('home')->middleware('auth');
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function(){ //...
+    Route::get('/', 'HomeController@index')->name('selection');
 
-Route::group(['namespace' => 'Auth'], function () {
+    Route::get('/dashboard', 'HomeController@dashboard')->name('home')->middleware('auth');
 
-Route::get('/login/{type}','LoginController@loginForm')->middleware('guest')->name('login.show');
+    Route::group(['namespace' => 'Auth'], function () {
 
-Route::post('/login','LoginController@login')->name('login');
+    Route::get('/login/{type}','LoginController@loginForm')->middleware('guest')->name('login.show');
 
-Route::get('/logout/{type}','LoginController@logout')->name('logout');
+    Route::post('/login','LoginController@login')->name('login');
+
+    Route::get('/logout/{type}','LoginController@logout')->name('logout');
 
 
 
-});
-
-        Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function(){ //...
+    });
         // Route::group(['middleware'=> ['auth']],function(){
         Route::resource('Teachers', 'TeacherController');
+        Route::resource('home', 'HomeController');
         Route::resource('Students', 'StudentController');
         Route::resource('online_classes', 'OnlineClasseController');
         Route::resource('Graduated', 'GraduatedController');
@@ -60,7 +61,7 @@ Route::get('/logout/{type}','LoginController@logout')->name('logout');
         Route::post('Delete_attachment', 'StudentController@Delete_attachment')->name('Delete_attachment');
         Route::post('Delete_attachment', 'StudentController@Delete_attachment')->name('Delete_attachment');
         Route::post('Promotion.edit/{id}', 'PromotionController@edit')->name('Promotion.edit');
-        Route::view('add_parent', 'livewire.show_Form');
+        Route::view('add_parent', 'livewire.show_Form')->name('add_parent');
 
     });
 // });

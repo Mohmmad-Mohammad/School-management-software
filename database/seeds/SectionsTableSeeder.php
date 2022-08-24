@@ -25,10 +25,10 @@ class SectionsTableSeeder extends Seeder
         ];
         foreach ($Sections as $section) {
             Section::create([
-                'Name_Section' => $section,
-                'Status' => 1,
-                'Grade_id' => Grade::all()->unique()->random()->id,
-                'Class_id' => Classroom::all()->unique()->random()->id
+                'name_section' => $section,
+                'status' => 1,
+                'grade_id' => Grade::all()->unique()->random()->id,
+                'class_id' => Classroom::all()->unique()->random()->id
             ]);
         }
     }

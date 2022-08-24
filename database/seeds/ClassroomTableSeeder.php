@@ -23,8 +23,8 @@ class ClassroomTableSeeder extends Seeder
 
         foreach ($classrooms as $classroom) {
             Classroom::create([
-            'Name_Class' => $classroom,
-            'Grade_id' => Grade::all()->unique()->random()->id
+            'name_class' => $classroom,
+            'grade_id' => Grade::all()->unique()->random()->id
             ]);
         }
     }
