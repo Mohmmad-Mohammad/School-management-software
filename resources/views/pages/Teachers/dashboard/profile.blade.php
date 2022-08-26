@@ -45,7 +45,7 @@
                                     <div class="col-sm-9">
                                         <p class="text-muted mb-0">
                                             <input type="text" name="Name_ar"
-                                                   value="{{ $information->getTranslation('Name', 'ar') }}"
+                                                   value="{{ $information->getTranslation('name', 'ar') }}"
                                                    class="form-control">
                                         </p>
                                     </div>
@@ -58,7 +58,7 @@
                                     <div class="col-sm-9">
                                         <p class="text-muted mb-0">
                                             <input type="text" name="Name_en"
-                                                   value="{{ $information->getTranslation('Name', 'en') }}"
+                                                   value="{{ $information->getTranslation('name', 'en') }}"
                                                    class="form-control">
                                         </p>
                                     </div>

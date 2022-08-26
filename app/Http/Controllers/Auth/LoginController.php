@@ -41,7 +41,7 @@ class LoginController extends Controller
         if (Auth::guard($this->chekGuard($request))->attempt(['email' => $request->email, 'password' => $request->password])) {
         return $this->redirect($request);
         }else{
-            return redirect()->back();
+            return redirect()->back()->with('message','هناك خطأ في كلمة المرور او اسم المستخدم');
         }
 
     }

@@ -44,6 +44,8 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
         Route::resource('OnlineZoom', 'OnlineZoomClassesController');
         Route::get('indirect','OnlineZoomClassesController@indirectCreate')->name('indirect.teacher.Create');
         Route::post('indirect','OnlineZoomClassesController@storeIndirect')->name('indirect.teacher.storeIndirect');
+        Route::get('profile', 'ProfileController@index')->name('profile.show');
+        Route::post('profile/{id}', 'ProfileController@update')->name('profile.update');
 
     });
 });
