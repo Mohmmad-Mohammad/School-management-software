@@ -68,7 +68,5 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
         Route::get('download_file/{filename}', 'LibraryController@downloadAttachment')->name('downloadAttachment');
         Route::get('indirect', 'OnlineClasseController@indirectCreate')->name('indirect.indirectCreate');
         Route::get('/classes/{id}', 'SectionController@getclasses');
-        Route::get('/Get_classrooms/{id}', 'StudentController@Get_classrooms');
-        Route::get('/Get_Sections/{id}', 'StudentController@Get_Sections');
         Route::get('Show_attachment/{studentsname}/{filename}', 'StudentController@Show_attachment')->name('Show_attachment');
         Route::get('Download_attachment/{studentsname}/{filename}', 'StudentController@Download_attachment')->name('Download_attachment');

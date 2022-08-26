@@ -41,6 +41,9 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
         Route::post('attendance_report','StudentController@attendanceSearch')->name('attendance.search');
         Route::resource('quizzes','QuizzController');
         Route::resource('questions', 'QuestionController');
+        Route::resource('OnlineZoom', 'OnlineZoomClassesController');
+        Route::get('indirect','OnlineZoomClassesController@indirectCreate')->name('indirect.teacher.Create');
+        Route::post('indirect','OnlineZoomClassesController@storeIndirect')->name('indirect.teacher.storeIndirect');
 
     });
 });

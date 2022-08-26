@@ -21,8 +21,8 @@
                     <div class="col-xl-12 mb-30">
                         <div class="card card-statistics h-100">
                             <div class="card-body">
-                                <a href="{{route('online_zoom_classes.create')}}" class="btn btn-success" role="button" aria-pressed="true">اضافة حصة اونلاين جديدة</a>
-                                <a class="btn btn-warning" href="{{route('indirect.teacher.create')}}">اضافة حصة اوفلاين جديدة</a>
+                                {{-- <a href="{{route('online_zoom_classes.create')}}" class="btn btn-success" role="button" aria-pressed="true">اضافة حصة اونلاين جديدة</a> --}}
+                                <a class="btn btn-warning" href="{{route('indirect.teacher.Create')}}">اضافة حصة  جديدة</a>
                                 <div class="table-responsive">
                                     <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
                                            data-page-length="50"

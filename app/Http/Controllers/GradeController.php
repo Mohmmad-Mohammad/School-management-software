@@ -44,7 +44,7 @@ class GradeController extends Controller
     }
     try {
     $grade = new Grade();
-    $grade ->Name = ['en'=>$request->Name_en,'ar'=>$request->Name];
+    $grade ->name = ['en'=>$request->Name_en,'ar'=>$request->Name];
     $grade->notes = $request->Notes;
     $grade->save();
     toastr()->success(trans('messages.success'));
