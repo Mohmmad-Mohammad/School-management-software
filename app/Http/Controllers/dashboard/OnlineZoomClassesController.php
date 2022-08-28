@@ -5,108 +5,54 @@ namespace App\Http\Controllers\dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\MeetingZoomTrait;
 use App\Models\Grade;
-use App\Models\online_classe;
 use App\Models\OnlineClasse;
+use App\Repository\Interfaces\OnlineZoomClassesRepositoryInterface;
 use Illuminate\Http\Request;
 use MacsiDigital\Zoom\Facades\Zoom;
 
 class OnlineZoomClassesController extends Controller
 {
     use MeetingZoomTrait;
-    public function index()
+
+    protected $OnlineZoomClasses;
+
+    public function __construct(OnlineZoomClassesRepositoryInterface $OnlineZoomClasses)
     {
-        $online_classes = OnlineClasse::where('created_by',auth()->user()->email)->get();
-        return view('pages.Teachers.dashboard.online_classes.index', compact('online_classes'));
+        $this->OnlineZoomClasses = $OnlineZoomClasses;
     }
 
+    public function index()
+    {
+        return $this->OnlineZoomClasses ->index();
+    }
 
     public function create()
     {
-        $Grades = Grade::all();
-        return view('pages.Teachers.dashboard.online_classes.add', compact('Grades'));
+        return $this->OnlineZoomClasses ->create();
     }
 
     public function indirectCreate()
     {
-        $Grades = Grade::all();
-        return view('pages.Teachers.dashboard.online_classes.indirect', compact('Grades'));
-    }
+        return $this->OnlineZoomClasses ->indirectCreate();
 
+    }
 
 
     public function store(Request $request)
     {
-        try {
+        return $this->OnlineZoomClasses ->store($request);
 
-            $meeting = $this->createMeeting($request);
-
-            OnlineClasse::create([
-                'integration' => true,
-                'grade_id' => $request->Grade_id,
-                'classroom_id' => $request->Classroom_id,
-                'section_id' => $request->section_id,
-                'created_by' => auth()->user()->email,
-                'meeting_id' => $meeting->id,
-                'topic' => $request->topic,
-                'start_at' => $request->start_time,
-                'duration' => $meeting->duration,
-                'password' => $meeting->password,
-                'start_url' => $meeting->start_url,
-                'join_url' => $meeting->join_url,
-            ]);
-            toastr()->success(trans('messages.success'));
-            return redirect()->route('OnlineZoom.index');
-        } catch (\Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-        }
     }
 
     public function storeIndirect(Request $request)
     {
-        try {
-            OnlineClasse::create([
-                'integration' => false,
-                'grade_id' => $request->Grade_id,
-                'classroom_id' => $request->Classroom_id,
-                'section_id' => $request->section_id,
-                'created_by' => auth()->user()->email,
-                'meeting_id' => $request->meeting_id,
-                'topic' => $request->topic,
-                'start_at' => $request->start_time,
-                'duration' => $request->duration,
-                'password' => $request->password,
-                'start_url' => $request->start_url,
-                'join_url' => $request->join_url,
-            ]);
-            toastr()->success(trans('messages.success'));
-            return redirect()->route('OnlineZoom.index');
-        } catch (\Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-        }
+        return $this->OnlineZoomClasses ->storeIndirect($request);
 
     }
 
-
     public function destroy(Request $request,$id)
     {
-        try {
+        return $this->OnlineZoomClasses ->destroy($request,$id);
 
-            $info = OnlineClasse::find($id);
-
-            if($info->integration == true){
-                $meeting = Zoom::meeting()->find($request->meeting_id);
-                $meeting->delete();
-                OnlineClasse::destroy($id);
-            }
-            else{
-
-                OnlineClasse::destroy($id);
-            }
-
-            toastr()->success(trans('messages.Delete'));
-            return redirect()->route('OnlineZoom.index');
-        } catch (\Exception $e) {
-            return redirect()->back()->with(['error' => $e->getMessage()]);
-        }
     }
 }

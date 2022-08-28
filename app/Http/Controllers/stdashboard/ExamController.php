@@ -4,35 +4,27 @@ namespace App\Http\Controllers\stdashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Quizze;
+use App\Repository\Interfaces\ExamDashboardRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ExamController extends Controller
 {
 
+
+    protected $Exam;
+
+    public function __construct(ExamDashboardRepositoryInterface $Exam)
+    {
+        $this->Exam = $Exam;
+    }
+
     public function index()
     {
-        $quizzes = Quizze::where('grade_id', auth()->user()->grade_id)
-        ->where('classroom_id', auth()->user()->classroom_id)
-        ->where('section_id', auth()->user()->section_id)
-        ->orderBy('id', 'DESC')
-        ->get();
-    return view('pages.Students.dashboard.exams.index', compact('quizzes'));
+    return  $this->Exam -> index();
     }
 
-
-    public function create()
-    {
-        //
-    }
-
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-
+    
     public function show($quizze_id)
     {
         $student_id = Auth::user()->id;

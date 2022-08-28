@@ -47,12 +47,10 @@ class TeacherRepository implements TeacherRepositoryInterface{
         }
         catch (\Exception $e) {
             DB::rollBack();
-            return $e;
-            // return redirect()->back()->with(['error' => $e->getMessage()]);
+            // return $e;
+            return redirect()->back()->with(['error' => $e->getMessage()]);
         }
-
     }
-
 
     public function editTeachers($id)
     {
@@ -79,7 +77,6 @@ class TeacherRepository implements TeacherRepositoryInterface{
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
     }
-
 
     public function DeleteTeachers($request)
     {
