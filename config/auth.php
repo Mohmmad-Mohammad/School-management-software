@@ -50,7 +50,7 @@ return [
         ],
         'parent' => [
             'driver' => 'session',
-            'provider' => 'my__parents',
+            'provider' => 'myparents',
         ],
 
         'api' => [
@@ -90,9 +90,9 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Teacher::class,
         ],
-        'my__parents' => [
+        'myparents' => [
             'driver' => 'eloquent',
-            'model' => App\Models\My_Parent::class,
+            'model' => App\Models\MyParent::class,
         ],
         // 'users' => [
         //     'driver' => 'database',

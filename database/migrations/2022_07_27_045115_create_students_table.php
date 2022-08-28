@@ -17,6 +17,7 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->text('name');
             $table->string('email')->unique();
+            $table->string('photo')->nullable();
             $table->string('password');
             $table->bigInteger('gender_id')->unsigned();
             $table->foreign('gender_id')->references('id')->on('genders')->onDelete('cascade');

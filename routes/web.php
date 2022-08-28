@@ -57,7 +57,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
         Route::post('indirect', 'OnlineClasseController@storeIndirect')->name('indirect.storeIndirect');
         Route::post('delete_all','ClassroomController@delete_all')->name('delete_all');
         Route::post('Filter_Classes', 'ClassroomController@Filter_Classes')->name('Filter_Classes');
-        Route::post('Upload_attachment', 'StudentController@Upload_attachment')->name('Upload_attachment');
         Route::post('Delete_attachment', 'StudentController@Delete_attachment')->name('Delete_attachment');
         Route::post('Delete_attachment', 'StudentController@Delete_attachment')->name('Delete_attachment');
         Route::post('Promotion.edit/{id}', 'PromotionController@edit')->name('Promotion.edit');
@@ -70,3 +69,4 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
         Route::get('/classes/{id}', 'SectionController@getclasses');
         Route::get('Show_attachment/{studentsname}/{filename}', 'StudentController@Show_attachment')->name('Show_attachment');
         Route::get('Download_attachment/{studentsname}/{filename}', 'StudentController@Download_attachment')->name('Download_attachment');
+        Route::post('Upload_attachment', 'StudentController@Upload_attachment')->name('Upload_attachment');

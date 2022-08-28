@@ -159,7 +159,7 @@
                                                                                                 <!--placeholder-->
                                                                                                 <option
                                                                                                     value="{{ $Grade->id }}">
-                                                                                                    {{ $Grade->Name }}
+                                                                                                    {{ $Grade->name }}
                                                                                                 </option>
                                                                                                 @foreach ($list_Grades as $list_Grade)
                                                                                                     <option
@@ -209,7 +209,7 @@
                                                                                                    <label for="inputName" class="control-label">{{ trans('Sections_trans.Name_Teacher') }}</label>
                                                                                                    <select multiple name="teacher_id[]" class="form-control" id="exampleFormControlSelect2">
                                                                                                        @foreach($list_Sections->teachers as $teacher)
-                                                                                                           <option selected value="{{$teacher['id']}}">{{$teacher['Name']}}</option>
+                                                                                                           <option selected value="{{$teacher['id']}}">{{$teacher['name']}}</option>
                                                                                                        @endforeach
 
                                                                                                        @foreach($teachers as $teacher)
@@ -335,7 +335,7 @@
                                                         disabled>{{ trans('Sections_trans.Select_Grade') }}
                                                 </option>
                                                 @foreach ($list_Grades as $list_Grade)
-                                                    <option value="{{ $list_Grade->id }}"> {{ $list_Grade->Name }}
+                                                    <option value="{{ $list_Grade->id }}"> {{ $list_Grade->name }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -354,7 +354,7 @@
                                         <label for="inputName" class="control-label">{{ trans('Sections_trans.Name_Teacher') }}</label>
                                         <select multiple name="teacher_id[]" class="form-control" id="exampleFormControlSelect2">
                                             @foreach($teachers as $teacher)
-                                                <option value="{{$teacher->id}}">{{$teacher->Name}}</option>
+                                                <option value="{{$teacher->id}}">{{$teacher->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>

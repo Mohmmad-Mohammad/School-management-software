@@ -15,8 +15,6 @@
 @section('content')
     <!-- row -->
 
-
-
     <div class="card-body">
 
         <section style="background-color: #eee;">
@@ -24,24 +22,19 @@
                 <div class="col-lg-4">
                     <div class="card mb-4">
                         <div class="card-body text-center">
-                            <img @if(auth()->user()->photo)
-                            src="{{asset('attachments/profile/'.auth()->user()->photo)}}"
-                            @else
-                            src="{{asset('assets/images/user_icon.png')}}"
-                                @endif
-
+                            <img src="{{URL::asset('assets/images/teacher.png')}}"
                                  alt="avatar"
                                  class="rounded-circle img-fluid" style="width: 150px;">
-                            <h5 style="font-family: Cairo" class="my-3">{{$information->name}}</h5>
+                            <h5 style="font-family: Cairo" class="my-3">{{$information->Name}}</h5>
                             <p class="text-muted mb-1">{{$information->email}}</p>
-                            <p class="text-muted mb-4">معلم</p>
+                            <p class="text-muted mb-4">ولي امر</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-8">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <form action="{{route('profile.update',$information->id)}}" method="post"  enctype="multipart/form-data">
+                            <form action="{{route('profile.update.parent',$information->id)}}" method="post">
                                 @csrf
                                 <div class="row">
                                     <div class="col-sm-3">
@@ -50,7 +43,7 @@
                                     <div class="col-sm-9">
                                         <p class="text-muted mb-0">
                                             <input type="text" name="Name_ar"
-                                                   value="{{ $information->getTranslation('name', 'ar') }}"
+                                                   value="{{ $information->getTranslation('name_father', 'ar') }}"
                                                    class="form-control">
                                         </p>
                                     </div>
@@ -63,7 +56,7 @@
                                     <div class="col-sm-9">
                                         <p class="text-muted mb-0">
                                             <input type="text" name="Name_en"
-                                                   value="{{ $information->getTranslation('name', 'en') }}"
+                                                   value="{{ $information->getTranslation('name_father', 'en') }}"
                                                    class="form-control">
                                         </p>
                                     </div>
@@ -77,9 +70,8 @@
                                         <p class="text-muted mb-0">
                                             <input type="password" id="password" class="form-control" name="password">
                                         </p><br><br>
-                                        <input type="file" accept="image/*" name="photo"  required>
                                         <input type="checkbox" class="form-check-input" onclick="myFunction()"
-                                            id="exampleCheck1">
+                                               id="exampleCheck1">
                                         <label class="form-check-label" for="exampleCheck1">اظهار كلمة المرور</label>
                                     </div>
                                 </div>

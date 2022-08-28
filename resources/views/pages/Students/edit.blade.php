@@ -105,7 +105,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>{{trans('Students_trans.Date_of_Birth')}}  :</label>
-                                    <input class="form-control" type="text" value="{{$Students->date_birth}}" id="datepicker-action" name="Date_Birth" data-date-format="yyyy-mm-dd">
+                                    <input class="form-control" type="text" value="{{$Students->date_Birth}}" id="datepicker-action" name="Date_Birth" data-date-format="yyyy-mm-dd">
                                 </div>
                             </div>
 

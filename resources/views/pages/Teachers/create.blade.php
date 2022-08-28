@@ -32,7 +32,7 @@
                     <div class="col-xs-12">
                         <div class="col-md-12">
                             <br>
-                            <form action="{{route('Teachers.store')}}" method="post">
+                            <form action="{{route('Teachers.store')}}" method="post" enctype="multipart/form-data">
                              @csrf
                             <div class="form-row">
                                 <div class="col">
@@ -110,7 +110,20 @@
                                 </div>
                             </div>
                             <br>
+                            <div class="form-row">
+                                <div class="col">
+                                    <label for="title">{{trans('Teacher_trans.Joining_Date')}}</label>
+                                    <div class='input-group date'>
 
+                                        <input type="file" name="photo" required>
+                                    </div>
+                                    @error('photo')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <br>
+<br>
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">{{trans('Teacher_trans.Address')}}</label>
                                 <textarea class="form-control" name="Address"

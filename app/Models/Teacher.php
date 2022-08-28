@@ -12,6 +12,7 @@ class Teacher extends Authenticatable
     protected $table = 'teachers';
     public $translatable = ['name'];
     public $guarded = [];
+    public $fillable = ['photo'];
 
 
     public function specializations()
@@ -29,5 +30,10 @@ class Teacher extends Authenticatable
     public function Sections()
     {
         return $this->belongsToMany('App\Models\Section','teacher_section');
+    }
+
+    public function images()
+    {
+        return $this->morphMany('App\Models\Image', 'imageable');
     }
 }

@@ -29,20 +29,20 @@
                             @else
                             src="{{asset('assets/images/user_icon.png')}}"
                                 @endif
-
                                  alt="avatar"
                                  class="rounded-circle img-fluid" style="width: 150px;">
                             <h5 style="font-family: Cairo" class="my-3">{{$information->name}}</h5>
                             <p class="text-muted mb-1">{{$information->email}}</p>
-                            <p class="text-muted mb-4">معلم</p>
+                            <p class="text-muted mb-4">طالب</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-8">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <form action="{{route('profile.update',$information->id)}}" method="post"  enctype="multipart/form-data">
+                            <form action="{{route('profile-student.update',$information->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <p class="mb-0">اسم المستخدم باللغة العربية</p>
@@ -79,7 +79,7 @@
                                         </p><br><br>
                                         <input type="file" accept="image/*" name="photo"  required>
                                         <input type="checkbox" class="form-check-input" onclick="myFunction()"
-                                            id="exampleCheck1">
+                                               id="exampleCheck1">
                                         <label class="form-check-label" for="exampleCheck1">اظهار كلمة المرور</label>
                                     </div>
                                 </div>

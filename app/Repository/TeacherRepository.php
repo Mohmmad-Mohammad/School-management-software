@@ -1,14 +1,19 @@
 <?php
 
 namespace App\Repository;
+
+use App\Http\Traits\AttachFilesTrait;
 use App\Models\Gender;
+use App\Models\Image;
 use App\Models\Specialization;
 use App\Models\Teacher;
 use App\Repository\Interfaces\TeacherRepositoryInterface;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class TeacherRepository implements TeacherRepositoryInterface{
 
+        use AttachFilesTrait;
     public function getAllTeachers(){
         return Teacher::all();
     }
@@ -23,7 +28,8 @@ class TeacherRepository implements TeacherRepositoryInterface{
 
     public function StoreTeachers($request)
     {
-    try {
+        DB::beginTransaction();
+        try {
             $Teachers = new Teacher();
             $Teachers->email = $request->Email;
             $Teachers->password =  Hash::make($request->Password);
@@ -32,12 +38,17 @@ class TeacherRepository implements TeacherRepositoryInterface{
             $Teachers->gender_id = $request->Gender_id;
             $Teachers->joining_Date = $request->Joining_Date;
             $Teachers->address = $request->Address;
+            $Teachers->photo = $request->file('photo')->getClientOriginalName();
             $Teachers->save();
+            $this->uploadFile($request,'photo','teachers');
+            DB::commit();
             toastr()->success(trans('messages.success'));
             return redirect()->route('Teachers.create');
         }
         catch (\Exception $e) {
-            return redirect()->back()->with(['error' => $e->getMessage()]);
+            DB::rollBack();
+            return $e;
+            // return redirect()->back()->with(['error' => $e->getMessage()]);
         }
 
     }

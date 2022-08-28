@@ -19,7 +19,7 @@ class ParentsTableSeeder extends Seeder
     {
         DB::table('myparents')->delete();
         $my_parents = new MyParent();
-        $my_parents->email = 'samir.gamal77@yahoo.com';
+        $my_parents->email = 'mohammad.mohammad@yahoo.com';
         $my_parents->password = Hash::make('12345678');
         $my_parents->name_father = ['en' => 'yusef', 'ar' => ' يوسف'];
         $my_parents->national_ID_father = '1234567810';
