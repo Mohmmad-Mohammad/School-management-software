@@ -20,18 +20,19 @@ class Teacher extends Authenticatable
         return $this->belongsTo('App\Models\Specialization', 'specialization_id');
     }
 
-    // علاقة بين المعلمين والانواع لجلب جنس المعلم
+    // Relationship between teachers and species to bring the gender of the teacher
     public function genders()
     {
         return $this->belongsTo('App\Models\Gender', 'gender_id');
     }
 
-// علاقة المعلمين مع الاقسام
+    // Teachers' relationship with the departments
     public function Sections()
     {
         return $this->belongsToMany('App\Models\Section','teacher_section');
     }
 
+    // Teachers' relationship with Image
     public function images()
     {
         return $this->morphMany('App\Models\Image', 'imageable');

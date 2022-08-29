@@ -15,64 +15,55 @@ class Student extends Authenticatable
     public $translatable = ['name'];
     protected $guarded =[];
 
-    // علاقة بين الطلاب والانواع لجلب اسم النوع في جدول الطلاب
-
+    // Relationship between students and types to fetch the name of the type in the students table
     public function gender()
     {
         return $this->belongsTo('App\Models\Gender', 'gender_id');
     }
 
-    // علاقة بين الطلاب والمراحل الدراسية لجلب اسم المرحلة في جدول الطلاب
-
+    // Relationship between students and grades to fetch the name of the grade in the students table
     public function grade()
     {
         return $this->belongsTo('App\Models\Grade', 'grade_id');
     }
 
-
-    // علاقة بين الطلاب الصفوف الدراسية لجلب اسم الصف في جدول الطلاب
-
+    // Relationship between students and classes to fetch the name of the class in the students table
     public function classroom()
     {
         return $this->belongsTo('App\Models\Classroom', 'classroom_id');
     }
 
-    // علاقة بين الطلاب الاقسام الدراسية لجلب اسم القسم  في جدول الطلاب
-
+    // Relationship between students and departments to fetch the name of the department in the students table
     public function section()
     {
         return $this->belongsTo('App\Models\Section', 'section_id');
     }
 
-
-    // علاقة بين الطلاب والصور لجلب اسم الصور  في جدول الطلاب
+    // Relationship between students and images to fetch the name of the images in the students table
     public function images()
     {
         return $this->morphMany('App\Models\Image', 'imageable');
     }
 
-    // علاقة بين الطلاب والجنسيات  لجلب اسم الجنسية  في جدول الجنسيات
-
+    // Relationship between students and nationalities to fetch the name of the nationality in the nationalities table
     public function Nationality()
     {
         return $this->belongsTo('App\Models\Nationalitie', 'nationalitie_id');
     }
 
-
-    // علاقة بين الطلاب والاباء لجلب اسم الاب في جدول الاباء
-
+    // Relationship between students and parents to fetch the name of the father in the parents table
     public function myparent()
     {
         return $this->belongsTo('App\Models\MyParent', 'parent_id');
     }
 
-    // علاقة بين جدول سدادت الطلاب وجدول الطلاب لجلب اجمالي المدفوعات والمتبقي
+    // Relationship between the student payment schedule and the student schedule to get the total payments and the balance
     public function student_account()
     {
         return $this->hasMany('App\Models\StudentAccount', 'student_id');
     }
 
-   // علاقة بين جدول الطلاب وجدول الحضور والغياب
+    // Relationship between the student schedule and the attendance and absence schedule
     public function attendance()
     {
         return $this->hasMany('App\Models\Attendance', 'student_id');

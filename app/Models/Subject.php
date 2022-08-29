@@ -13,21 +13,19 @@ class Subject extends Model
 
     protected $fillable = ['name','grade_id','classroom_id','teacher_id'];
 
-
-    // جلب اسم المراحل الدراسية
-
+    // Get the grades name
     public function grade()
     {
         return $this->belongsTo('App\Models\Grade', 'grade_id');
     }
 
-    // جلب اسم الصفوف الدراسية
+    // Get the class name
     public function classroom()
     {
         return $this->belongsTo('App\Models\Classroom', 'classroom_id');
     }
 
-    // جلب اسم المعلم
+    // fetch the teacher's name
     public function teacher()
     {
         return $this->belongsTo('App\Models\Teacher', 'teacher_id');

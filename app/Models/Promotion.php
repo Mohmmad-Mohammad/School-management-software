@@ -14,45 +14,36 @@ class Promotion extends Model
         return $this->belongsTo('App\Models\Student', 'student_id');
     }
 
-    // علاقة بين الترقيات والمراحل الدراسية لجلب اسم المرحلة في جدول الترقيات
-
+    // Relationship between promotions and grades to fetch the stage name in the promotions table
     public function f_grade()
     {
         return $this->belongsTo('App\Models\Grade', 'from_grade');
     }
 
-
-    // علاقة بين الترقيات الصفوف الدراسية لجلب اسم الصف في جدول الترقيات
-
+    // Relationship between promotions classes to fetch the name of the class in the promotions table
     public function f_classroom()
     {
         return $this->belongsTo('App\Models\Classroom', 'from_Classroom');
     }
 
-    // علاقة بين الترقيات الاقسام الدراسية لجلب اسم القسم  في جدول الترقيات
-
+    // Relationship between promotions and academic departments to fetch the name of the department in the promotions table
     public function f_section()
     {
         return $this->belongsTo('App\Models\Section', 'from_section');
     }
 
-    // علاقة بين الترقيات والمراحل الدراسية لجلب اسم المرحلة في جدول الترقيات
-
+    // Relationship between promotions and grades to fetch the stage name in the promotions table
     public function t_grade()
     {
         return $this->belongsTo('App\Models\Grade', 'to_grade');
     }
-
-
-    // علاقة بين الترقيات الصفوف الدراسية لجلب اسم الصف في جدول الترقيات
 
     public function t_classroom()
     {
         return $this->belongsTo('App\Models\Classroom', 'to_Classroom');
     }
 
-    // علاقة بين الترقيات الاقسام الدراسية لجلب اسم القسم  في جدول الترقيات
-
+    // Relationship between promotions classes to fetch the name of the class in the promotions table
     public function t_section()
     {
         return $this->belongsTo('App\Models\Section', 'to_section');

@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    تعديل رسوم دراسية
+{{trans('all.TuitionFee')}}
 @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-    تعديل رسوم دراسية
+{{trans('all.TuitionFee')}}
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -34,19 +34,19 @@
                         @csrf
                         <div class="form-row">
                             <div class="form-group col">
-                                <label for="inputEmail4">الاسم باللغة العربية</label>
+                                <label for="inputEmail4">{{trans('Students_trans.name_ar')}}</label>
                                 <input type="text" value="{{$fee->getTranslation('title','ar')}}" name="title_ar" class="form-control">
                                 <input type="hidden" value="{{$fee->id}}" name="id" class="form-control">
                             </div>
 
                             <div class="form-group col">
-                                <label for="inputEmail4">الاسم باللغة الانجليزية</label>
+                                <label for="inputEmail4">{{trans('Students_trans.name_en')}} </label>
                                 <input type="text" value="{{$fee->getTranslation('title','en')}}" name="title_en" class="form-control">
                             </div>
 
 
                             <div class="form-group col">
-                                <label for="inputEmail4">المبلغ</label>
+                                <label for="inputEmail4">{{trans('all.amount')}}</label>
                                 <input type="number" value="{{$fee->amount}}" name="amount" class="form-control">
                             </div>
 
@@ -56,7 +56,7 @@
                         <div class="form-row">
 
                             <div class="form-group col">
-                                <label for="inputState">المرحلة الدراسية</label>
+                                <label for="inputState">{{trans('all.Educationallevel')}} </label>
                                 <select class="custom-select mr-sm-2" name="Grade_id">
                                     @foreach($Grades as $Grade)
                                         <option value="{{ $Grade->id }}" {{$Grade->id == $fee->grade_id ? 'selected' : ""}}>{{ $Grade->name }}</option>
@@ -65,13 +65,13 @@
                             </div>
 
                             <div class="form-group col">
-                                <label for="inputZip">الصف الدراسي</label>
+                                <label for="inputZip">{{trans('all.Classroom')}} </label>
                                 <select class="custom-select mr-sm-2" name="Classroom_id">
                                     <option value="{{$fee->classroom_id}}">{{$fee->classroom->name_class}}</option>
                                 </select>
                             </div>
                             <div class="form-group col">
-                                <label for="inputZip">السنة الدراسية</label>
+                                <label for="inputZip">{{trans('all.academicyear')}} </label>
                                 <select class="custom-select mr-sm-2" name="year">
                                     @php
                                         $current_year = date("Y")
@@ -82,24 +82,24 @@
                                 </select>
                             </div>
                             <div class="form-group col">
-                                <label for="inputZip">نوع الرسوم</label>
+                                <label for="inputZip">{{trans('all.TypeFees')}} </label>
                                 <select class="custom-select mr-sm-2" name="Fee_type">
-                                    <option value="1">رسوم دراسية</option>
-                                    <option value="2">رسوم باص</option>
-                                    <option value="3"> غير ذالك </option>
+                                    <option value="1">{{trans('all.TuitionFees')}} </option>
+                                    <option value="2">{{trans('all.BusFee')}} </option>
+                                    <option value="3"> {{trans('all.otherthanthat')}}  </option>
                                 </select>
                             </div>
                         </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="inputAddress">ملاحظات</label>
+                            <label for="inputAddress">{{trans('all.Note')}}</label>
                             <textarea class="form-control" name="description" id="exampleFormControlTextarea1"
                                       rows="4">{{$fee->description}}</textarea>
                         </div>
                         <br>
 
-                        <button type="submit" class="btn btn-primary">تاكيد</button>
+                        <button type="submit" class="btn btn-primary">{{trans('all.ok')}}</button>
 
                     </form>
 

@@ -2,13 +2,14 @@
 @section('css')
     @toastr_css
 @section('title')
-    قائمة الكتب
+{{trans('all.lastBook')}}
 @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-    قائمة الكتب
+{{trans('all.lastBook')}}
+
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -22,7 +23,7 @@
                         <div class="card card-statistics h-100">
                             <div class="card-body">
                                 <a href="{{route('library.create')}}" class="btn btn-success btn-sm" role="button"
-                                   aria-pressed="true">اضافة كتاب جديد</a><br><br>
+                                   aria-pressed="true"> {{trans('all.AddBook')}} </a><br><br>
                                 <div class="table-responsive">
                                     <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
                                            data-page-length="50"
@@ -30,12 +31,12 @@
                                         <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>اسم الكتب</th>
-                                            <th>اسم المعلم</th>
-                                            <th>المرحلة الدراسية</th>
-                                            <th>الصف الدراسي</th>
-                                            <th>القسم</th>
-                                            <th>العمليات</th>
+                                            <th>{{trans('all.NameBook')}} </th>
+                                            <th>{{trans('all.NameTeacher')}} </th>
+                                            <th>{{trans('all.Educationallevel')}} </th>
+                                            <th>{{trans('all.Classroom')}} </th>
+                                            <th>{{trans('all.Section')}}</th>
+                                            <th>{{trans('all.Processes')}}</th>
                                         </tr>
                                         </thead>
                                         <tbody>

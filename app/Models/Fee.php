@@ -12,16 +12,14 @@ class Fee extends Model
     protected $fillable=['title','amount','grade_id','classroom_id','year','description','fee_type'];
 
 
-    // علاقة بين الرسوم الدراسية والمراحل الدراسية لجب اسم المرحلة
-
+    // Relationship between tuition fees and academic stages for the name of the stage
     public function grade()
     {
         return $this->belongsTo('App\Models\Grade', 'grade_id');
     }
 
 
-    // علاقة بين الصفوف الدراسية والرسوم الدراسية لجب اسم الصف
-
+    // Relationship between classes and tuition fees for JP name
     public function classroom()
     {
         return $this->belongsTo('App\Models\Classroom', 'classroom_id');

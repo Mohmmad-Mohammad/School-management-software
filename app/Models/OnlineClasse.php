@@ -16,12 +16,10 @@ class OnlineClasse extends Model
         return $this->belongsTo('App\Models\Grade', 'grade_id');
     }
 
-
     public function classroom()
     {
         return $this->belongsTo('App\Models\Classroom', 'classroom_id');
     }
-
 
     public function section()
     {

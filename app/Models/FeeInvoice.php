@@ -18,7 +18,6 @@ class FeeInvoice extends Model
         return $this->belongsTo('App\Models\Classroom', 'classroom_id');
     }
 
-
     public function section()
     {
         return $this->belongsTo('App\Models\Section', 'section_id');

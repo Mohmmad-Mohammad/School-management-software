@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    الرسوم الدراسية
+ {{trans('all.TuitionFees')}}
 @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-    الرسوم الدراسية
+{{trans('all.TuitionFees')}}
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -22,7 +22,7 @@
                         <div class="card card-statistics h-100">
                             <div class="card-body">
                                 <a href="{{route('Fees.create')}}" class="btn btn-success btn-sm" role="button"
-                                   aria-pressed="true">اضافة رسوم جديدة</a><br><br>
+                                   aria-pressed="true">  {{trans('all.AddFees')}}</a><br><br>
                                 <div class="table-responsive">
                                     <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
                                            data-page-length="50"
@@ -30,13 +30,13 @@
                                         <thead>
                                         <tr class="alert-success">
                                             <th>#</th>
-                                            <th>الاسم</th>
-                                            <th>المبلغ</th>
-                                            <th>المرحلة الدراسية</th>
-                                            <th>الصف الدراسي</th>
-                                            <th>السنة الدراسية</th>
-                                            <th>ملاحظات</th>
-                                            <th>العمليات</th>
+                                            <th>{{trans('all.Name')}}</th>
+                                            <th>{{trans('all.amount')}}</th>
+                                            <th>{{trans('all.Educationallevel')}} </th>
+                                            <th>{{trans('all.Classroom')}} </th>
+                                            <th>{{trans('all.academicyear')}} </th>
+                                            <th>{{trans('all.Note')}}</th>
+                                            <th>{{trans('all.Processes')}}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
