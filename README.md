@@ -27,4 +27,4 @@ Features Provided
 
 # Author
 
-[Mohammad mohammad](https://mohmmad-mohammad.github.io/Portfolio/)
+[Mohammad-Mohammad](https://mohmmad-mohammad.github.io/Portfolio/)
