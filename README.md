@@ -17,7 +17,7 @@ Features Provided
 # Simplified setup
 
 ### In your teminal, issue these commands
-
+-   Need version `PHP 7.4.1`
 -   RUN `composer install`
 -   RUN `cp .env.example .env`
 -   RUN `php artisan key:generate`
